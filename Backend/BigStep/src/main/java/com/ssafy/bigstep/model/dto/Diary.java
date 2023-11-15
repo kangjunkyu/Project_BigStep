@@ -1,7 +1,7 @@
 package com.ssafy.bigstep.model.dto;
 
 public class Diary {
-	String diaryId;
+	int diaryId;
 	String userId;
 	
 	String title;
@@ -20,12 +20,12 @@ public class Diary {
 	}
 
 
-	public String getDiaryId() {
+	public int getDiaryId() {
 		return diaryId;
 	}
 
 
-	public void setDiaryId(String diaryId) {
+	public void setDiaryId(int diaryId) {
 		this.diaryId = diaryId;
 	}
 
