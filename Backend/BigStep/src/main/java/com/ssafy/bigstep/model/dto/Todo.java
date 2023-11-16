@@ -1,18 +1,65 @@
 package com.ssafy.bigstep.model.dto;
 
 public class Todo {
+	int todoId;
+	int diaryId;
+	String userId;
+	
+	
 	String date;
 	String workout;
-	String startTime;
-	String endTime;
+	
+	int startHour;
+	int startMinute;
+	int endHour;
+	int endMinute;
+	
+	public Todo() {
+		
+	}
 	
 	
-	public Todo(String date, String workout, String startTime, String endTime) {
+	public Todo(int diaryId, String userId, String date, String workout, int startHour, int startMinute, int endHour,
+			int endMinute) {
 		super();
+		this.diaryId = diaryId;
+		this.userId = userId;
 		this.date = date;
 		this.workout = workout;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.startHour = startHour;
+		this.startMinute = startMinute;
+		this.endHour = endHour;
+		this.endMinute = endMinute;
+	}
+
+
+	public int getTodoId() {
+		return todoId;
+	}
+
+
+	public void setTodoId(int todoId) {
+		this.todoId = todoId;
+	}
+
+
+	public int getDiaryId() {
+		return diaryId;
+	}
+
+
+	public void setDiaryId(int diaryId) {
+		this.diaryId = diaryId;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 
@@ -36,33 +83,55 @@ public class Todo {
 	}
 
 
-	public String getStartTime() {
-		return startTime;
+	public int getStartHour() {
+		return startHour;
 	}
 
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+	public void setStartHour(int startHour) {
+		this.startHour = startHour;
 	}
 
 
-	public String getEndTime() {
-		return endTime;
+	public int getStartMinute() {
+		return startMinute;
 	}
 
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+	public void setStartMinute(int startMinute) {
+		this.startMinute = startMinute;
 	}
 
-	////////////////////////////////////////
-	// end - start로 운동시간 계산하는 method 만들기
-	////////////////////////////////////////
-	
+
+	public int getEndHour() {
+		return endHour;
+	}
+
+
+	public void setEndHour(int endHour) {
+		this.endHour = endHour;
+	}
+
+
+	public int getEndMinute() {
+		return endMinute;
+	}
+
+
+	public void setEndMinute(int endMinute) {
+		this.endMinute = endMinute;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Todo [date=" + date + ", workOut=" + workout + ", startTime=" + startTime + ", endTime=" + endTime
-				+ "]";
+		return "Todo [todoId=" + todoId + ", diaryId=" + diaryId + ", userId=" + userId + ", date=" + date
+				+ ", workout=" + workout + ", startHour=" + startHour + ", startMinute=" + startMinute + ", endHour="
+				+ endHour + ", endMinute=" + endMinute + "]";
 	}
+	
+	
+	
+	
 	
 }

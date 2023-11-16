@@ -11,7 +11,13 @@ public class Diary {
 	String img;
 	String orgImg;
 	
+	int likeCnt;
 	
+	
+	public Diary() {
+		
+	}
+
 	public Diary(String userId, String title, String content) {
 		super();
 		this.userId = userId;
@@ -89,11 +95,19 @@ public class Diary {
 		this.orgImg = orgImg;
 	}
 
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+	
+	
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 
 	@Override
 	public String toString() {
 		return "Diary [diaryId=" + diaryId + ", userId=" + userId + ", title=" + title + ", content=" + content
-				+ ", date=" + date + ", img=" + img + ", orgImg=" + orgImg + "]";
+				+ ", date=" + date + ", img=" + img + ", orgImg=" + orgImg + ", likeCnt=" + likeCnt +  "]";
 	}
 	
 }
