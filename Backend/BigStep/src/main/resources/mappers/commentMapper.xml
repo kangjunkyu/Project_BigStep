@@ -23,7 +23,7 @@
 		SET content = #{content}
 		WHERE commentid = #{commentId}
 	</update>
-	
+	<!-- 수정 시간 관련 차후 생각 -->
 	
 	<!-- selectAll -->
 	<select id="selectComments" parameterType="int" resultType="Comment">

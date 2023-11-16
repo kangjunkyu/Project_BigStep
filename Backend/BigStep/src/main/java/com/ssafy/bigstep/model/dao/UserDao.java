@@ -10,7 +10,6 @@ public interface UserDao {
 	public int insertUser(User user);
 
 	// delete(회원탈퇴)
-
 	public int deleteUser(String id);
 
 	// update

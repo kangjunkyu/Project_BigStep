@@ -6,36 +6,29 @@
 
 	<insert id="insertTodo" parameterType="Todo"
 		keyProperty="todoId" useGeneratedKeys="true">
-		INSERT INTO todos(diaryid, userid,
-		workout, start_hour, start_minute,
-		end_hour,
-		end_minute )
-		VALUES (#{diaryid}, #{userid}, #{workout},
-		#{start_hour},
-		#{start_minute},
-		#{end_hour}, #{end_minute})
+		INSERT INTO todos (diaryid, userid, date, workout, start_hour, start_minute, end_hour, end_minute)
+		VALUES (#{diaryId}, #{userId}, #{date}, #{workout}, #{startHour}, #{startMinute}, #{endHour}, #{endMinute})
 	</insert>
 
 	<delete id="deleteTodo" parameterType="int">
-		DELETE FROM todos WHERE
-		todoId = #{todoId}
+		DELETE FROM todos 
+		WHERE todoId = #{todoId}
 	</delete>
 
 	<update id="updateTodo" parameterType="Todo">
-		UPDATE todos SET workout =
-		#{workout}, start_hour = #{start_hour}, start_minute =
-		#{start_minute}, end_hour = #{end_hour}, end_minute = #{end_hour}
-		WHERE todoId =
-		#{todoId}
+		UPDATE todos 
+		SET workout = #{workout}, start_hour = #{startHour}, start_minute = #{startMinute}, 
+		end_hour = #{endHour}, end_minute = #{endHour}
+		WHERE todoId = #{todoId}
 	</update>
 
 	<select id="selectTodos" parameterType="int" resultType="Todo">
-		SELECT * FROM todos WHERE
-		diaryId = #{diaryId}
+		SELECT * FROM todos 
+		WHERE diaryId = #{diaryId}
 	</select>
 
 	<select id="selectTodo" parameterType="int" resultType="Todo">
-		SELECT * FROM todos WHERE
-		todoId = #{todoId}
+		SELECT * FROM todos 
+		WHERE todoId = #{todoId}
 	</select>
 </mapper>
