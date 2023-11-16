@@ -1,6 +1,7 @@
 package com.ssafy.bigstep.model.dto;
 
 public class Comment {
+	int commentId;
 	int diaryId;
 	String userId;
 	String nickname;
@@ -18,6 +19,14 @@ public class Comment {
 		this.content = content;
 	}
 
+
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
 
 	public int getDiaryId() {
 		return diaryId;

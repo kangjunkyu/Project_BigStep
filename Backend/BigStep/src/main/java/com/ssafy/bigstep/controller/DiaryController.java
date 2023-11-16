@@ -8,4 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/diary")
 @CrossOrigin("*")
 public class DiaryController {
+	
+	
+	
+	
 }
