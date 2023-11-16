@@ -15,7 +15,7 @@ public interface UserService {
 	public int deleteUser(String id);
 
 	// update
-	public int updateUser(String id);
+	public int updateUser(User user);
 
 	// SelectAll
 	public List<User> selectUsers();
