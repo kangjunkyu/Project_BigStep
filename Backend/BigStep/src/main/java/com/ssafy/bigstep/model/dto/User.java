@@ -6,6 +6,8 @@ public class User {
 	String pw;
 	String name;
 	
+	String nickname;
+	
 	String address; // 차후 고려 (시, 구, 동 나눌지 안나눌지)
 	
 	String UID;		// 네이버 고유 식별자
@@ -14,27 +16,40 @@ public class User {
 	int weight;
 	int age;
 	
+	int gender;
 	
 	
-	public User(String id, String pw, String name, String address) {
+	public User() {
+		
+	}
+
+
+	public User(String id, String pw, String name, String nickname, String address) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
+		this.nickname = nickname;
 		this.address = address;
 	}
 	
 	
-	public User(String id, String pw, String name, String address, int height, int weight, int age) {
+	
+	public User(String id, String pw, String name, String nickname, String address, String UID, int height, int weight,
+			int age, int gender) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
+		this.nickname = nickname;
 		this.address = address;
+		this.UID = UID;
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
+		this.gender = gender;
 	}
+
 
 
 	public String getId() {
@@ -86,6 +101,24 @@ public class User {
 		this.age = age;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+	
+	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
+	
+	public int getGender() {
+		return gender;
+	}
+	
+	
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
 
 	@Override
 	public String toString() {
