@@ -6,6 +6,7 @@ CREATE TABLE `users` (
 	`id` varchar(40) NOT NULL PRIMARY KEY,
     `pw` varchar(40) NOT NULL,
     `name` varchar(40) NOT NULL,
+    `nickname` varchar(40) NOT NULL,
     
     `address` varchar(100) NOT NULL,
     
@@ -13,7 +14,10 @@ CREATE TABLE `users` (
     
     `height` INT,
     `weight` INT,
-    `age` INT
+    `age` INT,
+    `gender` INT,
+    
+    `isPublic` boolean NOT NULL default TRUE
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE `diarys` (
@@ -24,5 +28,56 @@ CREATE TABLE `diarys` (
     
     `date` TIMESTAMP default current_timestamp,
     `img` varchar(50),
-    `orgimg` varchar(50)
+    `orgimg` varchar(50),
+    
+    `likeCnt` INT default 0,
+    
+    CONSTRAINT `diary_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE `todos` (
+	`todoid` INT AUTO_INCREMENT PRIMARY KEY,
+	`diaryid` INT NOT NULL,
+    `userid` varchar(40) NOT NULL,
+    
+    `date` TIMESTAMP NOT NULL,
+    `workout` varchar(80) NOT NULL,
+    `start_hour` INT NOT NULL,
+    `start_minute` INT NOT NULL,
+    `end_hour` INT NOT NULL,
+    `end_minute` INT NOT NULL,
+	
+    CONSTRAINT `todo_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
+    CONSTRAINT `todo_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+
+CREATE TABLE `comments` (
+	`commentid` INT AUTO_INCREMENT PRIMARY KEY,
+	`diaryid` INT NOT NULL,
+    `userid` varchar(40) NOT NULL,
+    `nickname` varchar(40) NOT NULL,
+    `content` TEXT NOT NULL,
+    
+    `reg_date` TIMESTAMP default current_timestamp,
+	CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
+    CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE `likes` (
+	`diaryid` INT NOT NULL,
+	`userid` varchar(40) NOT NULL,
+    
+    PRIMARY KEY(`diaryid`, `userid`),
+	CONSTRAINT `like_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
+    CONSTRAINT `like_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE `follows` (
+	`followerid` varchar(40) NOT NULL,
+    `followingid` varchar(40) NOT NULL,
+
+    PRIMARY KEY(`followerid`, `followingid`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+

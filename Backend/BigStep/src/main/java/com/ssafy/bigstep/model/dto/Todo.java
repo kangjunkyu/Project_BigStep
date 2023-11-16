@@ -2,15 +2,15 @@ package com.ssafy.bigstep.model.dto;
 
 public class Todo {
 	String date;
-	String workOut;
+	String workout;
 	String startTime;
 	String endTime;
 	
 	
-	public Todo(String date, String workOut, String startTime, String endTime) {
+	public Todo(String date, String workout, String startTime, String endTime) {
 		super();
 		this.date = date;
-		this.workOut = workOut;
+		this.workout = workout;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
@@ -26,13 +26,13 @@ public class Todo {
 	}
 
 
-	public String getWorkOut() {
-		return workOut;
+	public String getWorkout() {
+		return workout;
 	}
 
 
-	public void setWorkOut(String workOut) {
-		this.workOut = workOut;
+	public void setWorkout(String workout) {
+		this.workout = workout;
 	}
 
 
@@ -61,7 +61,7 @@ public class Todo {
 	
 	@Override
 	public String toString() {
-		return "Todo [date=" + date + ", workOut=" + workOut + ", startTime=" + startTime + ", endTime=" + endTime
+		return "Todo [date=" + date + ", workOut=" + workout + ", startTime=" + startTime + ", endTime=" + endTime
 				+ "]";
 	}
 	
