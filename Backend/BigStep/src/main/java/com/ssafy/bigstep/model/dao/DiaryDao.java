@@ -22,5 +22,8 @@ public interface DiaryDao {
 	//SelectOne
 	public Diary selectDiary(int diaryId);
 	
+	// increase likeCnt
+	public int increaseLikeCnt(int diaryId);
+	
 	
 }

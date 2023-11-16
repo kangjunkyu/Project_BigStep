@@ -1,1 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.bigstep.model.dao.CommentDao">
+	
+	<!-- insert -->
+	<insert id="insertComment" parameterType="Comment">
+		INSERT INTO comments (diaryid, userid, nickname, content)
+		VALUES (#{diaryId}, #{userId}, #{nickname}, #{content})
+	</insert>
+	
+	
+	<!-- delete -->
+	<delete id="deleteComment" parameterType="int">
+		DELETE FROM comments
+		WHERE commentid = #{commentId}
+	</delete>
+	
+	<!-- update -->
+	<update id="updateComment" parameterType="Comment">
+		UPDATE comments
+		SET content = #{content}
+		WHERE commentid = #{commentId}
+	</update>
+	
+	
+	<!-- selectAll -->
+	<select id="selectComments" parameterType="int" resultType="Comment">
+		SELECT FROM comments
+		WHERE diaryid = #{diaryId}
+	</select>
+	
+	
+	<!-- selectOne -->
+	<select id="selectComment" parameterType="int" resultType="Comment">
+		SELECT FROM comments
+		WHERE commentid = #{commentId}
+	</select>
+
+</mapper>

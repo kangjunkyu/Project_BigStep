@@ -43,4 +43,10 @@ public class DiaryServiceImpl implements DiaryService{
 		return dDao.selectDiary(diaryId);
 	}
 
+	@Override
+	@Transactional
+	public int increaseLikeCnt(int diaryId) {
+		return dDao.increaseLikeCnt(diaryId);
+	}
+
 }

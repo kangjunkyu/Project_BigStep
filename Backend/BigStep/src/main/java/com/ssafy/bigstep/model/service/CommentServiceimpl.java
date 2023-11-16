@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafy.bigstep.model.dao.CommentDao;
 import com.ssafy.bigstep.model.dto.Comment;
@@ -15,16 +16,19 @@ public class CommentServiceimpl implements CommentService{
 	CommentDao cDao;
 
 	@Override
+	@Transactional
 	public int insertComment(Comment comment) {
 		return cDao.insertComment(comment);
 	}
 
 	@Override
+	@Transactional
 	public int deleteComment(int commentId) {
 		return cDao.deleteComment(commentId);
 	}
 
 	@Override
+	@Transactional
 	public int updateComment(Comment comment) {
 		return cDao.updateComment(comment);
 	}
