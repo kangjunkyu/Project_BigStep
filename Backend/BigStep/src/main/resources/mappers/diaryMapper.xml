@@ -45,4 +45,11 @@
 		SET likeCnt = likeCnt + 1
 		WHERE diaryid = #{diaryId}
 	</update>
+	
+	<!-- increase likeCnt -->
+	<update id="decreaseLikeCnt" parameterType="int">
+		UPDATE diarys
+		SET likeCnt = likeCnt - 1
+		WHERE diaryid = #{diaryId}
+	</update>
 </mapper>

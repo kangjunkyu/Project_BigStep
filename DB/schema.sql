@@ -7,7 +7,8 @@ CREATE TABLE `users` (
     `pw` varchar(40) NOT NULL,
     `name` varchar(40) NOT NULL,
     `nickname` varchar(40) NOT NULL,
-    
+    `email` varchar(100) NOT NULL,
+    `phone` varchar(40) NOT NULL,
     `address` varchar(100) NOT NULL,
     
     `uid` varchar(80),
@@ -81,8 +82,8 @@ CREATE TABLE `follows` (
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 
-INSERT INTO users (id, pw, name, nickname, address)
-VALUES ("ssafy", "1234", "강준규", "강준규", "123");
+INSERT INTO users (id, pw, name, nickname, email, phone, address)
+VALUES ("ssafy", "1234", "강준규", "강준규", "ssafy@ssafy.com", "010-1111-1111", "123");
 
 INSERT INTO diarys (userid, title, content, date)
 VALUES ("ssafy", "테스트 제목", "테스트 content", "20231117");

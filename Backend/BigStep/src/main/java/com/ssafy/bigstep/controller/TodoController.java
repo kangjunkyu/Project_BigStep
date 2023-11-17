@@ -22,7 +22,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/todo-api")
+@RequestMapping("/todo")
 @CrossOrigin("*")
 @Api(tags="할일 관리 Api")
 public class TodoController {
@@ -50,7 +50,7 @@ public class TodoController {
 		}
 	}
 	
-	@GetMapping("/todo/{todoId}")
+	@GetMapping("/{todoId}")
 	@ApiOperation(value="Todo 상세 조회", notes="{todoId}에 해당하는 todo 상세 정보를 조회한다.")
 	public ResponseEntity<?> selectTodo(@PathVariable int todoId){
 		try {
@@ -66,7 +66,7 @@ public class TodoController {
 			
 	}
 
-	@PostMapping("/todo")
+	@PostMapping("/")
 	@ApiOperation(value="Todo 등록", notes="JSON 형태로 입력받은 todo를 등록한다.")
 	public ResponseEntity<?> insertTodo(@RequestBody Todo todo) {
 		try {
@@ -81,7 +81,7 @@ public class TodoController {
 		}
 	}
 	
-	@DeleteMapping("/todo/{todoId}")
+	@DeleteMapping("/{todoId}")
 	@ApiOperation(value="Todo 삭제", notes="{todoId}에 해당하는 todo를 삭제한다.")
 	public ResponseEntity<?> deleteUser(@PathVariable int todoId){
 		try {
@@ -96,7 +96,7 @@ public class TodoController {
 		}
 	}
 	
-	@PutMapping("/todo")
+	@PutMapping("/")
 	@ApiOperation(value="Todo 등록", notes="JSON 형태로 입력받은 todo 정보를 바탕으로 todo를 수정한다.")
 	public ResponseEntity<?> updateUser(@RequestBody Todo todo){
 		try {

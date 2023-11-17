@@ -22,7 +22,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/diary-api")
+@RequestMapping("/diary")
 @CrossOrigin("*")
 @Api(tags="다이어리 관리 Api")
 public class DiaryController {
@@ -49,7 +49,7 @@ public class DiaryController {
 		}
 	}
 	
-	@GetMapping("/diary/{diaryId}")
+	@GetMapping("/{diaryId}")
 	@ApiOperation(value="다이어리 상세 조회", notes="{diaryId}에 해당하는 diary의 상세 정보를 조회한다.")
 	public ResponseEntity<?> getDetail(@PathVariable int diaryId){
 		try {
@@ -64,7 +64,7 @@ public class DiaryController {
 		}
 	}
 	
-	@PostMapping("/diary")
+	@PostMapping("/")
 	@ApiOperation(value="다이어리 등록", notes="JSON 형태로 입력받은 diary를 등록한다.")
 	public ResponseEntity<?> insertDiary(@RequestBody Diary diary){
 		try {
@@ -79,7 +79,7 @@ public class DiaryController {
 		}
 	}
 	
-	@PutMapping("/diary")
+	@PutMapping("/")
 	@ApiOperation(value="다이어리 수정", notes="JSON 형태로 입력받은 diary 정보를 바탕으로 diary를  수정한다.")
 	public ResponseEntity<?> updateDiary(@RequestBody Diary diary){
 		try {
@@ -94,7 +94,7 @@ public class DiaryController {
 		}
 	}
 	
-	@DeleteMapping("/diary/{diaryId}")
+	@DeleteMapping("/{diaryId}")
 	@ApiOperation(value="다이어리 삭제", notes="{diaryId}에 해당하는 diary를 삭제한다.")
 	public ResponseEntity<?> deleteDiary(@PathVariable int diaryId){
 		try {

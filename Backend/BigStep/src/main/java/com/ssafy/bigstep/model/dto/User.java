@@ -8,6 +8,8 @@ public class User {
 	
 	String nickname;
 	
+	String email;
+	String phone;
 	String address; // 차후 고려 (시, 구, 동 나눌지 안나눌지)
 	
 	String UID;		// 네이버 고유 식별자
@@ -23,28 +25,40 @@ public class User {
 	
 	public User() {}
 
-	public User(String id, String pw, String name, String nickname, String address) {
+	
+
+	public User(String id, String pw, String name, String nickname, String email, String phone, String address) {
+		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.nickname = nickname;
+		this.email = email;
+		this.phone = phone;
 		this.address = address;
 	}
 
-	public User(String id, String pw, String name, String nickname, String address, String uID, int height, int weight,
-			int age, int gender, boolean isPublic) {
+	public User(String id, String pw, String name, String nickname, String email, String phone, String address,
+			String uID, int height, int weight, int age, int gender) {
+		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.nickname = nickname;
+		this.email = email;
+		this.phone = phone;
 		this.address = address;
 		UID = uID;
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
 		this.gender = gender;
-		this.isPublic = isPublic;
 	}
+
+
+	
+	
+
 
 
 	public String getId() {
@@ -65,6 +79,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getAddress() {
 		return address;
 	}
@@ -124,12 +139,35 @@ public class User {
 	public void setPublic(boolean isPublic) {
 		this.isPublic = isPublic;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", pw=" + pw + ", name=" + name + ", nickname=" + nickname + ", address=" + address
-				+ ", UID=" + UID + ", height=" + height + ", weight=" + weight + ", age=" + age + ", gender=" + gender
-				+ ", isPublic=" + isPublic + "]";
+		return "User [id=" + id + ", pw=" + pw + ", name=" + name + ", nickname=" + nickname + ", email=" + email
+				+ ", phone=" + phone + ", address=" + address + ", UID=" + UID + ", height=" + height + ", weight="
+				+ weight + ", age=" + age + ", gender=" + gender + ", isPublic=" + isPublic + "]";
 	}
 }

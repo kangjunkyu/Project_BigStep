@@ -24,7 +24,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/user-api")
+@RequestMapping("/user")
 @CrossOrigin("*")
 @Api(tags="유저 관리 Api")
 public class UserController {
@@ -52,7 +52,7 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/user/{id}")
+	@GetMapping("/{id}")
 	@ApiOperation(value="유저 상세 조회", notes="{id}에 해당하는 유저의 상세 정보를 조회한다.")
 	public ResponseEntity<?> selectUser(@PathVariable String id){
 		try {
@@ -68,7 +68,7 @@ public class UserController {
 			
 	}
 
-	@PostMapping("/user")
+	@PostMapping("/")
 	@ApiOperation(value="유저 등록", notes="JSON 형태로 입력받은 유저 정보를 등록한다.")
 	public ResponseEntity<?> insertUser(@RequestBody User user) {
 		try {
@@ -83,7 +83,7 @@ public class UserController {
 		}
 	}
 	
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/{id}")
 	@ApiOperation(value="유저 삭제", notes="{id}에 해당하는 유저 정보를 삭제한다.")
 	public ResponseEntity<?> deleteUser(@PathVariable String id){
 		try {
@@ -98,7 +98,7 @@ public class UserController {
 		}
 	}
 	
-	@PutMapping("/user")
+	@PutMapping("/")
 	@ApiOperation(value="유저 수정", notes="JSON 형태로 입력받은 데이터를 바탕으로 유저 정보를 수정한다.")
 	public ResponseEntity<?> updateUser(@RequestBody User user){
 		try {
@@ -114,7 +114,7 @@ public class UserController {
 	}
 	
 
-	@PostMapping("/user/login")
+	@PostMapping("/login")
 	@ApiOperation(value="로그인", notes="JSON 형태로 입력받은 유저 정보를 이용하여 로그인을 시도한다.")
 	public ResponseEntity<?> login(@RequestBody User user, HttpSession session) {
 		User loginUser = uService.login(user);
@@ -125,7 +125,8 @@ public class UserController {
 		return new ResponseEntity<User>(loginUser, HttpStatus.OK);
 	}
 
-	@PostMapping("/user/logout")
+	@PostMapping("/logout")
+	@ApiOperation(value="로그아웃")
 	public ResponseEntity<Void> logout(HttpSession session) {
 		session.invalidate();
 		return new ResponseEntity<Void>(HttpStatus.OK);

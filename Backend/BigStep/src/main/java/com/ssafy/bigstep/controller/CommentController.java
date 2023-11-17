@@ -22,7 +22,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/comment-api")
+@RequestMapping("/comment")
 @CrossOrigin("*")
 @Api(tags="댓글 관리 Api")
 public class CommentController {
@@ -50,7 +50,7 @@ public class CommentController {
 		}
 	}
 	
-	@GetMapping("/comment/{commentId}")
+	@GetMapping("/{commentId}")
 	@ApiOperation(value="댓글 상세 조회", notes="{commentId}에 해당하는 댓글의 상세 정보를 조회한다.")
 	public ResponseEntity<?> getDetail(@PathVariable int commentId){
 		try {
@@ -65,7 +65,7 @@ public class CommentController {
 		}
 	}
 	
-	@PostMapping("/comment")
+	@PostMapping("/")
 	@ApiOperation(value="댓글 등록", notes="JSON 형태로 입력받은 댓글을 등록한다.")
 	public ResponseEntity<?> insertComment(@RequestBody Comment comment){
 		try {
@@ -80,7 +80,7 @@ public class CommentController {
 		}
 	}
 	
-	@PutMapping("/comment")
+	@PutMapping("/")
 	@ApiOperation(value="댓글 수정", notes="JSON 형태로 입력받은 댓글 정보를 바탕으로 댓글을 수정한다.")
 	public ResponseEntity<?> updateComment(@RequestBody Comment comment){
 		try {
@@ -95,7 +95,7 @@ public class CommentController {
 		}
 	}
 	
-	@DeleteMapping("/comment/{commentId}")
+	@DeleteMapping("/{commentId}")
 	@ApiOperation(value="댓글 삭제", notes="{commentId}에 해당하는 댓글을 삭제한다.")
 	public ResponseEntity<?> updateComment(@PathVariable int commentId){
 		try {
