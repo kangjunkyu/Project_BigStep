@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -86,6 +87,21 @@ public class CommentController {
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}else {
 				return new ResponseEntity<Comment>(comment, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return exceptionHandling(e);
+		}
+	}
+	
+	@DeleteMapping("/comment/{commentId}")
+	@ApiOperation(value="댓글 삭제", notes="{commentId}에 해당하는 댓글을 삭제한다.")
+	public ResponseEntity<?> updateComment(@PathVariable int commentId){
+		try {
+			int result = cService.deleteComment(commentId);
+			if(result == 0) {
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}else {
+				return new ResponseEntity<Integer>(result, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			return exceptionHandling(e);
