@@ -22,6 +22,7 @@ public interface UserService {
 
 	// SelectOne
 	public User selectUser(String id);
-
 	
+	// login
+	public User login(User user);
 }

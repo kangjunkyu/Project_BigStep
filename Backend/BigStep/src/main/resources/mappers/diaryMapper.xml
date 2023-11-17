@@ -28,14 +28,14 @@
 	
 	<!-- selectAll -->
 	<select id="selectDiarys" parameterType="String" resultType="Diary">
-		SELECT FROM diarys
+		SELECT * FROM diarys
 		WHERE userid = #{userId}
 	</select>
 	
 	
 	<!-- selectOne -->
 	<select id="selectDiary" parameterType="int" resultType="Diary">
-		SELECT FROM diarys
+		SELECT * FROM diarys
 		WHERE diaryid = #{diaryId}
 	</select>
 	

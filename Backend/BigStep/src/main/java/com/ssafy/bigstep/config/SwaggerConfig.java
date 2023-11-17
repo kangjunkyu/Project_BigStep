@@ -1,9 +1,9 @@
 package com.ssafy.bigstep.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -28,6 +28,7 @@ public class SwaggerConfig {
 				.apiInfo(apiInfo) 
 				.select() 
 				.apis(RequestHandlerSelectors.basePackage("com.ssafy.bigstep.controller"))
+//				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
 				.build();
 	}
 }

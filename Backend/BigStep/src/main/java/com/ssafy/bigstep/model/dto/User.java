@@ -18,38 +18,33 @@ public class User {
 	
 	int gender;
 	
+	boolean isPublic;
 	
-	public User() {
-		
-	}
-
+	
+	public User() {}
 
 	public User(String id, String pw, String name, String nickname, String address) {
-		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.nickname = nickname;
 		this.address = address;
 	}
-	
-	
-	
-	public User(String id, String pw, String name, String nickname, String address, String UID, int height, int weight,
-			int age, int gender) {
-		super();
+
+	public User(String id, String pw, String name, String nickname, String address, String uID, int height, int weight,
+			int age, int gender, boolean isPublic) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.nickname = nickname;
 		this.address = address;
-		this.UID = UID;
+		UID = uID;
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
 		this.gender = gender;
+		this.isPublic = isPublic;
 	}
-
 
 
 	public String getId() {
@@ -120,10 +115,21 @@ public class User {
 		this.gender = gender;
 	}
 
+	
+	public boolean isPublic() {
+		return isPublic;
+	}
+
+
+	public void setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+	}
+
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", pw=" + pw + ", name=" + name + ", address=" + address + ", UID=" + UID
-				+ ", height=" + height + ", weight=" + weight + ", age=" + age + "]";
+		return "User [id=" + id + ", pw=" + pw + ", name=" + name + ", nickname=" + nickname + ", address=" + address
+				+ ", UID=" + UID + ", height=" + height + ", weight=" + weight + ", age=" + age + ", gender=" + gender
+				+ ", isPublic=" + isPublic + "]";
 	}
-	
 }

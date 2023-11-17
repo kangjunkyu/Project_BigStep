@@ -46,4 +46,16 @@ public class UserServiceImpl implements UserService{
 	public User selectUser(String id) {
 		return uDao.selectUser(id);
 	}
+
+	@Override
+	public User login(User user) {
+		User loginUser = uDao.selectUser(user.getId());
+		if(loginUser != null && loginUser.getPw().equals(user.getPw())) {
+			return loginUser;
+		}else {
+			return null;			
+		}
+	}
+	
+
 }

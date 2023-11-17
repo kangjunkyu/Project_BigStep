@@ -81,3 +81,16 @@ CREATE TABLE `follows` (
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 
+INSERT INTO users (id, pw, name, nickname, address)
+VALUES ("ssafy", "1234", "강준규", "강준규", "123");
+
+INSERT INTO diarys (userid, title, content, date)
+VALUES ("ssafy", "테스트 제목", "테스트 content", "20231117");
+
+INSERT INTO todos (diaryid, userid, date, workout, start_hour, start_minute, end_hour, end_minute)
+VALUES (1, "ssafy", "20231117", "workout test", 9, 30, 10, 45);
+
+INSERT INTO comments (diaryid, userid, nickname, content)
+VALUES (1, "ssafy", "닉네임 test", "content test");
+
+
