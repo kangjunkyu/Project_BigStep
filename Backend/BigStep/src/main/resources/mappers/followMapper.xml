@@ -3,5 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.bigstep.model.dao.FollowDao">
-
+	
+	<!-- insert -->
+	<insert id="insertFollow" parameterType="hashmap">
+		INSERT INTO follows
+		VALUES (#{followerId}, #{followingId})
+	</insert>
+	
+	
+	<!-- delete -->
+	<delete id="deleteFollow" parameterType="hashmap">
+		DELETE FROM follows
+		WHERE followerid = #{followerId} AND followingid = #{followingId}
+	</delete>
+	
+	
+	<!-- following 조회 -->
+	<select id="selectFollowings" parameterType="String" resultType="String">
+		SELECT followingid FROM follows
+		WHERE followerid = #{followerId}
+	</select>
+	
+	
+	<!-- follower 조회 -->
+	<select id="selectFollowers" parameterType="String" resultType="String">
+		SELECT followerid FROM follows
+		WHERE followingid = #{followingId}
+	</select>
+		
 </mapper>

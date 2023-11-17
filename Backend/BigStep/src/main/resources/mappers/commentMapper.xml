@@ -27,14 +27,14 @@
 	
 	<!-- selectAll -->
 	<select id="selectComments" parameterType="int" resultType="Comment">
-		SELECT FROM comments
+		SELECT * FROM comments
 		WHERE diaryid = #{diaryId}
 	</select>
 	
 	
 	<!-- selectOne -->
 	<select id="selectComment" parameterType="int" resultType="Comment">
-		SELECT FROM comments
+		SELECT * FROM comments
 		WHERE commentid = #{commentId}
 	</select>
 

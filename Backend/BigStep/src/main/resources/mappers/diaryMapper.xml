@@ -28,14 +28,14 @@
 	
 	<!-- selectAll -->
 	<select id="selectDiarys" parameterType="String" resultType="Diary">
-		SELECT FROM diarys
+		SELECT * FROM diarys
 		WHERE userid = #{userId}
 	</select>
 	
 	
 	<!-- selectOne -->
 	<select id="selectDiary" parameterType="int" resultType="Diary">
-		SELECT FROM diarys
+		SELECT * FROM diarys
 		WHERE diaryid = #{diaryId}
 	</select>
 	
@@ -43,6 +43,13 @@
 	<update id="increaseLikeCnt" parameterType="int">
 		UPDATE diarys
 		SET likeCnt = likeCnt + 1
+		WHERE diaryid = #{diaryId}
+	</update>
+	
+	<!-- increase likeCnt -->
+	<update id="decreaseLikeCnt" parameterType="int">
+		UPDATE diarys
+		SET likeCnt = likeCnt - 1
 		WHERE diaryid = #{diaryId}
 	</update>
 </mapper>

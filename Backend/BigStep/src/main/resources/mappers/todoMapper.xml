@@ -23,12 +23,18 @@
 	</update>
 
 	<select id="selectTodos" parameterType="int" resultType="Todo">
-		SELECT * FROM todos 
+		SELECT todoid, diaryid, userid, date, workout, 
+		start_hour as starthour, start_minute as startminute,
+		end_hour as endhour, end_minute as endminute  
+		FROM todos 
 		WHERE diaryId = #{diaryId}
 	</select>
 
 	<select id="selectTodo" parameterType="int" resultType="Todo">
-		SELECT * FROM todos 
+		SELECT todoid, diaryid, userid, date, workout, 
+		start_hour as starthour, start_minute as startminute,
+		end_hour as endhour, end_minute as endminute
+		FROM todos 
 		WHERE todoId = #{todoId}
 	</select>
 </mapper>

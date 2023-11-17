@@ -6,8 +6,8 @@
 <mapper namespace="com.ssafy.bigstep.model.dao.UserDao">
 
 	<insert id="insertUser" parameterType="User" keyProperty="id" useGeneratedKeys="true">
-		INSERT INTO users (id, pw, name, nickname, address, height, weight, age, gender, isPublic)
-		VALUE (#{id}, #{pw}, #{name}, #{nickname}, #{address}, #{height}, #{weight}, #{age}, #{gender}, #{isPublic})
+		INSERT INTO users (id, pw, name, nickname, email, phone, address, height, weight, age, gender, isPublic)
+		VALUE (#{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, #{address}, #{height}, #{weight}, #{age}, #{gender}, #{isPublic})
 	</insert>
 
 	<delete id="deleteUser" parameterType="String">
