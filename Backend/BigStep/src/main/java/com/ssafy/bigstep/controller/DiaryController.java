@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafy.bigstep.model.dto.Diary;
 import com.ssafy.bigstep.model.service.DiaryService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/diary-api")
 @CrossOrigin("*")
+@Api(tags="다이어리 관리 Api")
 public class DiaryController {
 	
 	@Autowired

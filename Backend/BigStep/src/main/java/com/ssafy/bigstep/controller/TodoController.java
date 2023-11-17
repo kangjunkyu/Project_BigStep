@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafy.bigstep.model.dto.Todo;
 import com.ssafy.bigstep.model.service.TodoService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/todo-api")
 @CrossOrigin("*")
+@Api(tags="할일 관리 Api")
 public class TodoController {
 	
 	@Autowired

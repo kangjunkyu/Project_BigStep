@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafy.bigstep.model.dto.User;
 import com.ssafy.bigstep.model.service.UserService;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/user-api")
 @CrossOrigin("*")
+@Api(tags="유저 관리 Api")
 public class UserController {
 
 	@Autowired
