@@ -56,6 +56,9 @@ public class UserServiceImpl implements UserService{
 			return null;			
 		}
 	}
-	
 
+	@Override
+	public List<User> searchUsers(String word) {
+		return uDao.searchUsers(word);
+	}
 }

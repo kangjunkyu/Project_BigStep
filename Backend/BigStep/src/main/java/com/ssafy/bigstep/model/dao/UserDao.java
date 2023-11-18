@@ -20,5 +20,8 @@ public interface UserDao {
 
 	// SelectOne
 	public User selectUser(String id);
+	
+	// search
+	public List<User> searchUsers(String word);
 
 }

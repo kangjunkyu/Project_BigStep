@@ -9,6 +9,7 @@ import DiaryList from '@/components/diary/DiaryList.vue'
 import DiaryDetail from '@/components/diary/DiaryDetail.vue'
 import DiaryWrite from '@/components/diary/DiaryWrite.vue'
 import DiaryUpdate from '@/components/diary/DiaryUpdate.vue'
+import SearchResult from '@/components/search/SearchResult.vue'
 
 
 
@@ -65,7 +66,14 @@ const router = createRouter({
     {
       path: '/search',
       name: 'search',
-      component: SearchView
+      component: SearchView,
+      children: [
+        {
+          path: "result",
+          name: "searchResult",
+          component: SearchResult
+        },
+      ]
     },
 
 

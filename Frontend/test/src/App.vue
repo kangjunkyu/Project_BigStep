@@ -2,8 +2,8 @@
   <div>
     <h1>BigStep</h1>
     <HeaderNav/>
-    <input type="text" v-model="word">
-    <button @click="search" @keyup.enter="search">검색</button>
+    <input type="text" v-model="word" @keyup.enter="search"> 
+    <button @click="search">검색</button>
     <RouterView/>
   </div>
   
@@ -11,12 +11,14 @@
 
 <script setup>
 import {ref} from 'vue'
-import router from '@/router'
+import {useUserStore} from '@/stores/user'
 import HeaderNav from './components/common/HeaderNav.vue';
+
+const userStore = useUserStore()
 
 const word = ref("")
 const search = function(){
-  router.push({name: "search"})
+  userStore.search(word.value);
 }
 
 </script>

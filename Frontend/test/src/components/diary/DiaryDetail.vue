@@ -11,19 +11,22 @@
 </template>
 
 <script setup>
-    import {onMounted} from 'vue'
+    import {onMounted, computed} from 'vue'
     import {useRoute} from 'vue-router'
     import {useDiaryStore} from '@/stores/diary'
+    import {useUserStore} from '@/stores/user'
     import router from '@/router'
 
     const route = useRoute()
     const diaryId = route.params.diaryId
 
+    const userStore = useUserStore()
     const diaryStore = useDiaryStore()
 
     onMounted(() => {
         diaryStore.getDiary(diaryId)
     })
+    
     
     const showUpdate = function() {
         router.push("/diary/update/"+diaryStore.selectedDiary.diaryId)
@@ -37,5 +40,7 @@
 </script>
 
 <style scoped>
-
+    .hidden{
+        display: none;
+    }
 </style>

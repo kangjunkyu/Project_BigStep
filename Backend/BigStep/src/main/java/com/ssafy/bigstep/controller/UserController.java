@@ -131,4 +131,19 @@ public class UserController {
 		session.invalidate();
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
+	
+	@GetMapping("/users/{word}")
+	@ApiOperation(value="유저 검색")
+	public ResponseEntity<?> searchUsers(@PathVariable String word){
+		try {
+			List<User> userList = uService.searchUsers(word);
+			if (userList == null) {
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			} else {
+				return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return exceptionHandling(e);
+		}
+	}
 }

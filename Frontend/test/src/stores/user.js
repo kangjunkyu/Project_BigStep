@@ -3,12 +3,12 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import router from '@/router'
 
-const REST_USER_URL = "http://localhost:7777/user"
+const REST_USER_URL = "http://localhost:7777/user/"
 
 export const useUserStore = defineStore('user', () => {
   const loginUser = ref({})
   const login = function(user){
-    axios.post(REST_USER_URL+"/login", user)
+    axios.post(REST_USER_URL+"login", user)
     .then((response) => {
       loginUser.value = response.data
       router.push({name: "home"})
@@ -19,12 +19,28 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const logout = function(){
-    axios.post(REST_USER_URL+"/logout")
+    axios.post(REST_USER_URL+"logout")
     .then(()=>{
       loginUser.value = {}
       router.push({name: "home"})
     })
   }
 
-  return {loginUser, login, logout}
+  const searchWord = ref("")
+  const searchResult = ref([])
+  const search = function(word) {
+    axios.get(REST_USER_URL+`users/${word}`)
+    .then((response) => {
+        searchResult.value = response.data
+        searchWord.value = word;
+        console.log(searchResult.value)
+        router.push("/search/result")
+    })
+    .catch(() => {
+
+    })
+    
+  }
+
+  return {loginUser, login, logout, search, searchWord, searchResult}
 },{persist: true})
