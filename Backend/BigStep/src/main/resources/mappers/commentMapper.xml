@@ -37,19 +37,5 @@
 		SELECT * FROM comments
 		WHERE commentid = #{commentId}
 	</select>
-	
-	
-	<!-- delete by userId -->
-	<delete id="deleteCommentsByUserId" parameterType="String">
-		DELETE FROM comments
-		WHERE userid = #{userId}
-	</delete>
-	
-	
-	<!-- delete by diaryId -->
-	<delete id="deleteCommentsByDiaryId" parameterType="int">
-		DELETE FROM comments
-		WHERE diaryid = #{diaryId}
-	</delete>
 
 </mapper>

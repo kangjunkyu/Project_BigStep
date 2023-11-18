@@ -37,14 +37,4 @@
 		FROM todos 
 		WHERE todoId = #{todoId}
 	</select>
-	
-	<delete id="deleteTodosByUserId" parameterType="String">
-		DELETE FROM todos
-		WHERE userid = #{userId}
-	</delete>
-	
-	<delete id="deleteTodosByDiaryId" parameterType="int">
-		DELETE FROM todos
-		WHERE diaryid = #{diaryId}
-	</delete>
 </mapper>

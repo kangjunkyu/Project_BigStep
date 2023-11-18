@@ -12,8 +12,5 @@ public interface FollowDao {
 	List<String> selectFollowings(String followerId);
 	
 	List<String> selectFollowers(String followingId);
-	
-	// delete by userId
-	public int deleteFollowsByUserId(String userId);
-			
+
 }

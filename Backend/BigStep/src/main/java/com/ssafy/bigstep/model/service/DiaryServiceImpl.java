@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ssafy.bigstep.model.dao.CommentDao;
 import com.ssafy.bigstep.model.dao.DiaryDao;
+import com.ssafy.bigstep.model.dao.FollowDao;
+import com.ssafy.bigstep.model.dao.LikeDao;
+import com.ssafy.bigstep.model.dao.TodoDao;
 import com.ssafy.bigstep.model.dto.Diary;
 
 @Service

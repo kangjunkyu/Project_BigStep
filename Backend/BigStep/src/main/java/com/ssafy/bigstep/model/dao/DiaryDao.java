@@ -27,7 +27,5 @@ public interface DiaryDao {
 	
 	// decrease likeCnt
 	public int decreaseLikeCnt(int diaryId);
-	
-	// delete by userid
-	public int deleteDiarysByUserId(String userId);
+
 }

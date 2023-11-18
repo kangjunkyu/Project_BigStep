@@ -31,11 +31,4 @@
 		WHERE followingid = #{followingId}
 	</select>
 		
-		
-	<!-- delete by userId -->
-	<delete id="deleteFollowsByUserId" parameterType="String">
-		DELETE FROM follows
-		WHERE followerid = #{userId} OR followingid = #{userId} 
-	</delete>
-		
 </mapper>
