@@ -7,7 +7,7 @@
 	<!-- insert -->
 	<insert id="insertDiary" parameterType="Diary">
 		INSERT INTO diarys (userid, title, content, date, img, orgimg)
-		VALUES (#{userId}, #{title}. #{content}, #{date}, #{img}, #{orgImg})
+		VALUES (#{userId}, #{title}, #{content}, #{date}, #{img}, #{orgImg})
 	</insert>
 	
 	

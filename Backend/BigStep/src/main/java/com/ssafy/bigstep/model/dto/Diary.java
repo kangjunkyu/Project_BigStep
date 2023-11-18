@@ -14,12 +14,9 @@ public class Diary {
 	int likeCnt;
 	
 	
-	public Diary() {
-		
-	}
+	public Diary() {}
 
 	public Diary(String userId, String title, String content) {
-		super();
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
