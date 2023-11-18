@@ -52,4 +52,10 @@
 		SET likeCnt = likeCnt - 1
 		WHERE diaryid = #{diaryId}
 	</update>
+	
+	<!-- delete by userId -->
+	<delete id="deleteDiarysByUserId" parameterType="String">
+		DELETE FROM diarys
+		WHERE userid = #{userId}
+	</delete>
 </mapper>

@@ -21,5 +21,10 @@ public interface TodoDao {
 	//SelectOne
 	public Todo selectTodo(int todoId);
 	
+	// delete by userId
+	public int deleteTodosByUserId(String userId);
+	
+	// delete by diaryId
+	public int deleteTodosByDiaryId(int diaryId);
 	
 }

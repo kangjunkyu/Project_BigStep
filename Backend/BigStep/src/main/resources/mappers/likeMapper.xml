@@ -16,4 +16,17 @@
 		DELETE FROM likes
 		WHERE diaryid = #{diaryId} AND userid = #{userId}
 	</delete>
+	
+	<!-- delete by userId -->
+	<delete id="deleteLikesByUserId" parameterType="String">
+		DELETE FROM likes
+		WHERE userid = #{userId}
+	</delete>
+	
+	
+	<!-- delete by diaryId -->
+	<delete id="deleteLikesByDiaryId" parameterType="int">
+		DELETE FROM likes
+		WHERE diaryid = #{diaryId}
+	</delete>
 </mapper>

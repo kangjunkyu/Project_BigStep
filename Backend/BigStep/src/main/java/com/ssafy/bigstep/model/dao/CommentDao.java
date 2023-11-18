@@ -20,4 +20,10 @@ public interface CommentDao {
 	
 	// selectOne
 	public Comment selectComment(int commentId);
+	
+	// delete by userId
+	public int deleteCommentsByUserId(String userId);
+		
+	// delete by diaryId
+	public int deleteCommentsByDiaryId(int diaryId);
 }
