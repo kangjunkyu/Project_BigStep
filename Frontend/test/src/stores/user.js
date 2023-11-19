@@ -42,5 +42,16 @@ export const useUserStore = defineStore('user', () => {
     
   }
 
-  return {loginUser, login, logout, search, searchWord, searchResult}
+  const signupUser = function(user){
+    axios.post(REST_USER_URL, user)
+    .then(()=>{
+      alert("회원가입 완료")
+      router.push("/")
+    })
+    .catch(()=>{
+
+    })
+  }
+
+  return {loginUser, login, logout, search, searchWord, searchResult, signupUser}
 },{persist: true})
