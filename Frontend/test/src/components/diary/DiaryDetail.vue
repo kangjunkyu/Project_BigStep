@@ -1,12 +1,16 @@
 <template>
     <div>
-        <h4>diary detail</h4>
+        <h4>Diary Detail</h4>
         <button @click="showUpdate">수정</button>
         <button @click="deleteDiary">삭제</button>
         <p>{{ diaryStore.selectedDiary.title }}</p>
         <p>{{ diaryStore.selectedDiary.userId }}</p>
         <p>{{ diaryStore.selectedDiary.date }}</p>
         <p>{{ diaryStore.selectedDiary.content }}</p>
+        <hr>
+        <h4>Comment</h4>
+        <CommentWrite/>
+        <CommentList/>
     </div>
 </template>
 
@@ -16,6 +20,8 @@
     import {useDiaryStore} from '@/stores/diary'
     import {useUserStore} from '@/stores/user'
     import router from '@/router'
+    import CommentWrite from '../comment/CommentWrite.vue'
+    import CommentList from '../comment/CommentList.vue'
 
     const route = useRoute()
     const diaryId = route.params.diaryId
