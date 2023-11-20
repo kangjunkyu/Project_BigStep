@@ -7,4 +7,5 @@ public interface LikeDao {
 	int insertLike(HashMap<String, Object> map);
 	
 	int deleteLike(HashMap<String, Object> map);
+
 }

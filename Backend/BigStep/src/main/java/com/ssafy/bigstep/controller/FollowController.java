@@ -81,7 +81,7 @@ public class FollowController {
 	@ApiOperation(value="팔로워 목록 조회", notes="{followerId}에 해당하는 유저를 팔로우하는 유저들의 목록 조회")
 	public ResponseEntity<?> getFollowers(@PathVariable String followingId){
 		try {
-			List<String> followers = fService.selectFollowings(followingId);
+			List<String> followers = fService.selectFollowers(followingId);
 			if(followers == null) {
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 			}else {

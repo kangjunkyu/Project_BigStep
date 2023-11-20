@@ -7,14 +7,17 @@
 	<!-- insert -->
 	<insert id="insertDiary" parameterType="Diary">
 		INSERT INTO diarys (userid, title, content, date, img, orgimg)
-		VALUES (#{userId}, #{title}. #{content}, #{date}, #{img}, #{orgImg})
+		VALUES (#{userId}, #{title}, #{content}, #{date}, #{img}, #{orgImg})
 	</insert>
 	
 	
 	<!-- delete -->
 	<delete id="deleteDiary" parameterType="int">
-		DELETE FROM diarys 
-		WHERE diaryid = #{diaryId}
+		DELETE FROM todos WHERE diaryid = #{diaryId};
+		DELETE FROM comments WHERE diaryid = #{diaryId};
+		DELETE FROM likes WHERE diaryid = #{diaryId};
+	
+		DELETE FROM diarys WHERE diaryid = #{diaryId};
 	</delete>
 	
 	
@@ -52,4 +55,10 @@
 		SET likeCnt = likeCnt - 1
 		WHERE diaryid = #{diaryId}
 	</update>
+	
+	<!-- delete by userId -->
+	<delete id="deleteDiarysByUserId" parameterType="String">
+		DELETE FROM diarys
+		WHERE userid = #{userId}
+	</delete>
 </mapper>

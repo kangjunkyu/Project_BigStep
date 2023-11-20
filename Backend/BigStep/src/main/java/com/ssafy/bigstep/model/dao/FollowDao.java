@@ -12,4 +12,5 @@ public interface FollowDao {
 	List<String> selectFollowings(String followerId);
 	
 	List<String> selectFollowers(String followingId);
+
 }

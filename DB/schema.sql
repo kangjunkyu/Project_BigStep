@@ -47,6 +47,8 @@ CREATE TABLE `todos` (
     `start_minute` INT NOT NULL,
     `end_hour` INT NOT NULL,
     `end_minute` INT NOT NULL,
+    
+    `is_complete` boolean default false,
 	
     CONSTRAINT `todo_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
     CONSTRAINT `todo_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)

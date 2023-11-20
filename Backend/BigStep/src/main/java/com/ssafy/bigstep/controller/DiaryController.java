@@ -31,6 +31,7 @@ public class DiaryController {
 	DiaryService dService;
 	
 	public ResponseEntity<?> exceptionHandling(Exception e) {
+		e.printStackTrace();
 		return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
@@ -67,6 +68,7 @@ public class DiaryController {
 	@PostMapping("/")
 	@ApiOperation(value="다이어리 등록", notes="JSON 형태로 입력받은 diary를 등록한다.")
 	public ResponseEntity<?> insertDiary(@RequestBody Diary diary){
+		System.out.println(diary);
 		try {
 			int result = dService.insertDiary(diary);
 			if(result == 0) {

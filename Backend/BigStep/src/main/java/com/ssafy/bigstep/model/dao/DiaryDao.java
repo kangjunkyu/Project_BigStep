@@ -27,6 +27,5 @@ public interface DiaryDao {
 	
 	// decrease likeCnt
 	public int decreaseLikeCnt(int diaryId);
-	
-	
+
 }

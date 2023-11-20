@@ -20,6 +20,4 @@ public interface TodoDao {
 	
 	//SelectOne
 	public Todo selectTodo(int todoId);
-	
-	
 }

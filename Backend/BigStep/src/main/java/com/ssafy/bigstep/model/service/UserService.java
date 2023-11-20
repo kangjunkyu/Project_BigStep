@@ -25,4 +25,8 @@ public interface UserService {
 	
 	// login
 	public User login(User user);
+	
+	// search
+	public List<User> searchUsers(String word);
+
 }

@@ -14,6 +14,8 @@ public class Todo {
 	int endHour;
 	int endMinute;
 	
+	boolean isComplete;
+	
 	public Todo() {
 		
 	}
@@ -122,16 +124,23 @@ public class Todo {
 		this.endMinute = endMinute;
 	}
 
+	
+
+	public boolean isComplete() {
+		return isComplete;
+	}
+
+
+	public void setComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Todo [todoId=" + todoId + ", diaryId=" + diaryId + ", userId=" + userId + ", date=" + date
 				+ ", workout=" + workout + ", startHour=" + startHour + ", startMinute=" + startMinute + ", endHour="
-				+ endHour + ", endMinute=" + endMinute + "]";
+				+ endHour + ", endMinute=" + endMinute + ", isComplete=" + isComplete + "]";
 	}
-	
-	
-	
-	
 	
 }

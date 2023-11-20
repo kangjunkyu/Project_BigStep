@@ -16,4 +16,5 @@
 		DELETE FROM likes
 		WHERE diaryid = #{diaryId} AND userid = #{userId}
 	</delete>
+
 </mapper>
