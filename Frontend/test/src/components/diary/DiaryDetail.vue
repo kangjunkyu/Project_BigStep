@@ -3,6 +3,7 @@
         <h4>Diary Detail</h4>
         <button @click="showUpdate">수정</button>
         <button @click="deleteDiary">삭제</button>
+        <img :src="`http://localhost:7777/upload/${diaryStore.selectedDiary.img}`"/>
         <p>{{ diaryStore.selectedDiary.title }}</p>
         <p>{{ diaryStore.selectedDiary.userId }}</p>
         <p>{{ diaryStore.selectedDiary.date }}</p>
