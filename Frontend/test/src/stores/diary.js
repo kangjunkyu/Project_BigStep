@@ -29,8 +29,13 @@ export const useDiaryStore = defineStore('diary', () => {
     })
   }
 
-  const writeDiary = function(diary){
-    axios.post(REST_DIARY_URL, diary)
+  const writeDiary = function(frm){
+    
+    axios.post(REST_DIARY_URL, frm, {
+      headers:{
+        'Content-Type' : 'multipart/form-data'
+      }
+    })
     .then(() => {
       alert("작성 완료")
       router.push("/diary/list")
@@ -39,6 +44,9 @@ export const useDiaryStore = defineStore('diary', () => {
 
     })
   }
+
+
+    
 
   const updateDiary = function(diary){
     axios.put(REST_DIARY_URL, diary)

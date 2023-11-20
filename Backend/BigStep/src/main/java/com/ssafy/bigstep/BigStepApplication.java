@@ -10,7 +10,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan(basePackages = "com.ssafy.bigstep.model.dao")
 @EnableSwagger2
 public class BigStepApplication {
-
+	
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BigStepApplication.class, args);
 	}

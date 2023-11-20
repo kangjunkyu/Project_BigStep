@@ -1,19 +1,26 @@
 package com.ssafy.bigstep.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ssafy.bigstep.model.dto.Diary;
 import com.ssafy.bigstep.model.service.DiaryService;
@@ -29,6 +36,9 @@ public class DiaryController {
 	
 	@Autowired
 	DiaryService dService;
+	
+	@Autowired
+	ResourceLoader resLoader;
 	
 	public ResponseEntity<?> exceptionHandling(Exception e) {
 		e.printStackTrace();
@@ -67,9 +77,18 @@ public class DiaryController {
 	
 	@PostMapping("/")
 	@ApiOperation(value="다이어리 등록", notes="JSON 형태로 입력받은 diary를 등록한다.")
-	public ResponseEntity<?> insertDiary(@RequestBody Diary diary){
+	public ResponseEntity<?> insertDiary(@ModelAttribute Diary diary, @RequestParam(required=false) MultipartFile file) 
+		throws IllegalStateException, IOException{
 		System.out.println(diary);
+		System.out.println(file.getOriginalFilename());
 		try {
+			if(file != null && file.getSize() > 0) {
+				Resource res = resLoader.getResource("classpath:/static/upload");
+				diary.setImg(System.currentTimeMillis()+"_"+file.getOriginalFilename());
+				diary.setOrgImg(file.getOriginalFilename());
+				file.transferTo(new File(res.getFile().getCanonicalFile()+"/"+diary.getImg()));
+			}
+			
 			int result = dService.insertDiary(diary);
 			if(result == 0) {
 				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
