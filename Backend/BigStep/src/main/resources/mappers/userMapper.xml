@@ -24,10 +24,10 @@
 		DELETE FROM users WHERE id = #{id};
 	</delete>
 
-	<update id="updateUser" parameterType="String">
+	<update id="updateUser" parameterType="User">
 		UPDATE users 
-		SET nickname = #{nickname}, address = #{address}, height = #{height}, 
-		weight = #{weight}, age = #{age}, gender = #{gender}, isPublic = #{isPublic}
+		SET pw = #{pw}, nickname = #{nickname}, phone = #{phone}, address = #{address}, 
+		height = #{height}, weight = #{weight}, age = #{age}, gender = #{gender}, isPublic = #{isPublic}
 		WHERE id = #{id}
 	</update>
 
@@ -46,6 +46,11 @@
 		name LIKE CONCAT('%', #{word},'%') OR
 		nickname LIKE CONCAT('%', #{word},'%') OR
 		email LIKE CONCAT('%', #{word},'%')
+	</select>
+	
+	<select id="searchByUID" parameterType="String" resultType="User">
+		SELECT * FROM users
+		WHERE uid = #{UID}
 	</select>
 
 </mapper>
