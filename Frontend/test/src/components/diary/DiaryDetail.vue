@@ -8,33 +8,39 @@
         <p>{{ diaryStore.selectedDiary.date }}</p>
         <p>{{ diaryStore.selectedDiary.content }}</p>
         <hr>
-        <h4>Comment</h4>
-        <CommentWrite/>
-        <CommentList/>
-        <TodoList/>
+        <CommentView/>
+        <TodoView/>
     </div>
 </template>
 
 <script setup>
-    import {onMounted, computed} from 'vue'
+    import {onMounted, computed, onBeforeMount, watch} from 'vue'
     import {useRoute} from 'vue-router'
     import {useDiaryStore} from '@/stores/diary'
     import {useUserStore} from '@/stores/user'
+    import {useCommentStore} from '@/stores/comment'
     import router from '@/router'
-    import CommentWrite from '../comment/CommentWrite.vue'
-    import CommentList from '../comment/CommentList.vue'
-    import TodoList from '@/components/todo/TodoList.vue'
+    import CommentView from '@/views/CommentView.vue'
+    import TodoView from '@/views/TodoView.vue'
+    
 
     const route = useRoute()
     const diaryId = route.params.diaryId
 
     const userStore = useUserStore()
     const diaryStore = useDiaryStore()
-
-    onMounted(() => {
+    const commentStore = useCommentStore()
+    
+    const selectedDiary = computed(()=>diaryStore.selectedDiary)
+    onBeforeMount(() => {
         diaryStore.getDiary(diaryId)
     })
-    
+
+    watch(selectedDiary, ()=>{
+        diaryStore.getTodoList(diaryStore.selectedDiary.diaryId)
+        commentStore.getCommentList()
+    })
+
     
     const showUpdate = function() {
         router.push("/diary/update/"+diaryStore.selectedDiary.diaryId)
@@ -43,7 +49,7 @@
     const deleteDiary = function() {
         diaryStore.deleteDiary(diaryStore.selectedDiary.diaryId)
     }
-
+    
 
 </script>
 

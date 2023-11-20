@@ -18,14 +18,14 @@
 	<update id="updateTodo" parameterType="Todo">
 		UPDATE todos 
 		SET workout = #{workout}, start_hour = #{startHour}, start_minute = #{startMinute}, 
-		end_hour = #{endHour}, end_minute = #{endHour}
+		end_hour = #{endHour}, end_minute = #{endHour}, is_complete = #{isComplete}
 		WHERE todoId = #{todoId}
 	</update>
 
 	<select id="selectTodos" parameterType="int" resultType="Todo">
 		SELECT todoid, diaryid, userid, date, workout, 
 		start_hour as starthour, start_minute as startminute,
-		end_hour as endhour, end_minute as endminute  
+		end_hour as endhour, end_minute as endminute, is_complete as isComplete
 		FROM todos 
 		WHERE diaryId = #{diaryId}
 	</select>
@@ -33,7 +33,7 @@
 	<select id="selectTodo" parameterType="int" resultType="Todo">
 		SELECT todoid, diaryid, userid, date, workout, 
 		start_hour as starthour, start_minute as startminute,
-		end_hour as endhour, end_minute as endminute
+		end_hour as endhour, end_minute as endminute, is_complete as isComplete
 		FROM todos 
 		WHERE todoId = #{todoId}
 	</select>
