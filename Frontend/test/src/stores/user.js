@@ -52,5 +52,33 @@ export const useUserStore = defineStore('user', () => {
     })
   }
 
-  return {loginUser, login, logout, search, searchWord, searchResult, signupUser}
+  const checkToken = function(token){
+    axios.get(REST_USER_URL+`/uid/${token}`)
+    .then((response) => {
+      console.log(response.data)
+      // 로그인
+    })
+    .catch((error)=>{
+      if(error.response.status === 401){
+        console.log("401 에러")
+        // 유저등록 페이지로 이동(uid를 넣어서)
+      }else{
+        console.log("500 에러")
+      }
+    })
+  }
+
+  const updateUser = function(user){
+    axios.put(REST_USER_URL,user)
+    .then(()=>{
+      loginUser.value = user
+      alert("수정 완료")
+    })
+    .catch(()=>{
+
+    })
+  }
+
+
+  return {loginUser, login, logout, search, searchWord, searchResult, signupUser, checkToken, updateUser}
 },{persist: true})

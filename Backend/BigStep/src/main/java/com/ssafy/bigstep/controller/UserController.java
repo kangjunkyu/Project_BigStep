@@ -146,4 +146,19 @@ public class UserController {
 			return exceptionHandling(e);
 		}
 	}
+	
+	@GetMapping("/uid/{UID}")
+	@ApiOperation(value="유저 상세 조회(UID)", notes="{UID}에 해당하는 UID를 가진 유저의 상세 정보를 조회한다.")
+	public ResponseEntity<?> searchByUID(@PathVariable String UID){
+		try {
+			User user = uService.searchByUID(UID);
+			if (user == null) {
+				return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+			} else {
+				return new ResponseEntity<User>(user, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return exceptionHandling(e);
+		}
+	}
 }

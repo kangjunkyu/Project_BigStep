@@ -17,8 +17,9 @@ import TodoDetail from '@/components/todo/TodoDetail.vue'
 import TodoList from '@/components/todo/TodoList.vue'
 import TodoCreate from '@/components/todo/TodoCreate.vue'
 import TodoUpdate from '@/components/todo/TodoUpdate.vue'
-
-
+import NaverLoginView from '@/views/NaverLoginView.vue'
+import UserPageMain from '@/components/user/UserPageMain.vue'
+import UserUpdate from '@/components/user/UserUpdate.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView
+    },
+    {
+      path: '/naverlogin',
+      name: 'naverlogin',
+      component: NaverLoginView
     },
     {
       path: '/signup',
@@ -113,7 +119,19 @@ const router = createRouter({
     {
       path: '/my-page',
       name: 'mypage',
-      component: MyPageView
+      component: MyPageView,
+      children:[
+        {
+          path: "",
+          name: 'userpagemain',
+          component: UserPageMain
+        },
+        {
+          path: "update",
+          name: 'userupdate',
+          component: UserUpdate
+        },      
+      ]
     },
     {
       path: '/search',

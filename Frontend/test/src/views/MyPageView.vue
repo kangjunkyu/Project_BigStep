@@ -1,6 +1,7 @@
 <template>
     <div>
       <h3>MyPageView</h3>
+      <RouterView/>
     </div>
   </template>
   

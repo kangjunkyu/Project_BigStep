@@ -28,5 +28,8 @@ public interface UserService {
 	
 	// search
 	public List<User> searchUsers(String word);
+	
+	// searchByUID
+	public User searchByUID(String UID);
 
 }

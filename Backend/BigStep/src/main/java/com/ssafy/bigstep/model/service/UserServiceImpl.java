@@ -66,4 +66,9 @@ public class UserServiceImpl implements UserService{
 	public List<User> searchUsers(String word) {
 		return uDao.searchUsers(word);
 	}
+
+	@Override
+	public User searchByUID(String UID) {
+		return uDao.searchByUID(UID);
+	}
 }
