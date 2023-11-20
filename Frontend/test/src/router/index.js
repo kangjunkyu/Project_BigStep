@@ -14,6 +14,10 @@ import SearchResult from '@/components/search/SearchResult.vue'
 import followerList from "@/components/follow/followerList.vue";
 import followingList from "@/components/follow/followingList.vue";
 import TodoDetail from '@/components/todo/TodoDetail.vue'
+import TodoList from '@/components/todo/TodoList.vue'
+import TodoCreate from '@/components/todo/TodoCreate.vue'
+import TodoUpdate from '@/components/todo/TodoUpdate.vue'
+
 
 
 const router = createRouter({
@@ -47,7 +51,30 @@ const router = createRouter({
         {
           path: 'detail/:diaryId',
           name: 'diaryDetail',
-          component: DiaryDetail
+          component: DiaryDetail,
+          children:[
+            {
+              path: '',
+              name: 'todolist',
+              component: TodoList,
+            },
+            {
+              path: 'todo/detail/:todoId',
+              name: 'tododetail',
+              component: TodoDetail,
+            },
+            {
+              path: 'todo/create',
+              name: 'todocreate',
+              component: TodoCreate,
+            },
+            {
+              path: 'todo/update/:todoId',
+              name: 'todoupdate',
+              component: TodoUpdate,
+            },
+          ]
+
         },
         {
           path: 'write',

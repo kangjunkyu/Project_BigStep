@@ -97,8 +97,9 @@ public class TodoController {
 	}
 	
 	@PutMapping("/")
-	@ApiOperation(value="Todo 등록", notes="JSON 형태로 입력받은 todo 정보를 바탕으로 todo를 수정한다.")
+	@ApiOperation(value="Todo 수정", notes="JSON 형태로 입력받은 todo 정보를 바탕으로 todo를 수정한다.")
 	public ResponseEntity<?> updateUser(@RequestBody Todo todo){
+		System.out.println(todo);
 		try {
 			int result = tService.updateTodo(todo);
 			if(result == 0) {

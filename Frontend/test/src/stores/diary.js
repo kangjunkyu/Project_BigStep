@@ -30,7 +30,6 @@ export const useDiaryStore = defineStore('diary', () => {
   }
 
   const writeDiary = function(diary){
-    console.log(diary)
     axios.post(REST_DIARY_URL, diary)
     .then(() => {
       alert("작성 완료")
@@ -53,7 +52,6 @@ export const useDiaryStore = defineStore('diary', () => {
   }
 
   const deleteDiary = function(diaryId){
-    console.log(diaryId)
     axios.delete(REST_DIARY_URL+diaryId)
     .then(()=>{
       alert("삭제 완료")
@@ -75,6 +73,52 @@ export const useDiaryStore = defineStore('diary', () => {
     })
   }
 
+  
+  const selectedTodo = ref({})
+  const getTodo = function(todoId){
+    axios.get(REST_TODO_URL+todoId)
+    .then((response) => {
+      selectedTodo.value = response.data
+    })
+    .catch(()=>{
+
+    })
+  }
+
+
+  const createTodo = function(todo){
+    axios.post(REST_TODO_URL, todo)
+    .then(()=>{
+      alert("생성 완료")
+      router.push({name: 'todolist'})
+    })
+    .catch(()=>{
+
+    })
+  }
+
+  const updateTodo = function(todo){
+    axios.put(REST_TODO_URL, todo)
+    .then(()=>{
+      alert("test")
+      router.push({name: 'todolist'})
+    })
+    .catch(()=>{
+
+    })
+  }
+
+  const deleteTodo = function(todoId, diaryId){
+    axios.delete(REST_TODO_URL+todoId)
+    .then(()=>{
+      alert("삭제 완료")
+      getTodoList(diaryId)
+    })
+    .catch(()=>{
+
+    })
+  }
+
   return {diaryList, getList, selectedDiary, getDiary, writeDiary, updateDiary, deleteDiary,
-    todoList, getTodoList, }
+    todoList,selectedTodo, getTodo, getTodoList, createTodo, updateTodo, deleteTodo}
 },{persist: true})

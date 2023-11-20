@@ -10,15 +10,16 @@
 <script setup>
     import {ref, onMounted, computed} from 'vue'
     import {useCommentStore} from '@/stores/comment'
-    import CommentListItem from './CommentListItem.vue';
+    import CommentListItem from '@/components/comment/CommentListItem.vue';
 
     const commentStore = useCommentStore()
 
+    
     const commentList = computed(()=>commentStore.commentList)
     onMounted(()=>{
         commentStore.getCommentList()
     })
-    
+
 </script>
 
 <style scoped>
