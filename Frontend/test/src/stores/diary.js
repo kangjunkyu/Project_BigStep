@@ -5,6 +5,7 @@ import router from '@/router'
 import { useUserStore } from '@/stores/user'
 
 const REST_DIARY_URL = "http://localhost:7777/diary/"
+const REST_TODO_URL = "http://localhost:7777/todo/"
 
 export const useDiaryStore = defineStore('diary', () => {
   const userStore = useUserStore()
@@ -63,5 +64,17 @@ export const useDiaryStore = defineStore('diary', () => {
     })
   }
 
-  return {diaryList, getList, selectedDiary, getDiary, writeDiary, updateDiary, deleteDiary}
+  const todoList = ref([])
+  const getTodoList = function(diaryId){
+    axios.get(REST_TODO_URL+`todos/${diaryId}`)
+    .then((response) => {
+      todoList.value = response.data
+    })
+    .catch(()=>{
+
+    })
+  }
+
+  return {diaryList, getList, selectedDiary, getDiary, writeDiary, updateDiary, deleteDiary,
+    todoList, getTodoList, }
 },{persist: true})

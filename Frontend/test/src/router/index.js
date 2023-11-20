@@ -11,7 +11,9 @@ import DiaryDetail from '@/components/diary/DiaryDetail.vue'
 import DiaryWrite from '@/components/diary/DiaryWrite.vue'
 import DiaryUpdate from '@/components/diary/DiaryUpdate.vue'
 import SearchResult from '@/components/search/SearchResult.vue'
-
+import followerList from "@/components/follow/followerList.vue";
+import followingList from "@/components/follow/followingList.vue";
+import TodoDetail from '@/components/todo/TodoDetail.vue'
 
 
 const router = createRouter({
@@ -57,12 +59,29 @@ const router = createRouter({
           name: 'diaryUpdate',
           component: DiaryUpdate
         },
+        {
+          path: 'todo/detail',
+          name: 'todoDetail',
+          component: TodoDetail
+        }
       ]
     },
     {
       path: '/follow',
       name: 'follow',
-      component: FollowView
+      component: FollowView,
+      children:[
+        {
+          path: "following",
+          name: "following",
+          component: followingList,
+        },
+        {
+          path: "follower",
+          name: "follower",
+          component: followerList,
+        },
+      ]
     },
     {
       path: '/my-page',

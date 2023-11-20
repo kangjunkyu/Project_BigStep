@@ -11,6 +11,7 @@
         <h4>Comment</h4>
         <CommentWrite/>
         <CommentList/>
+        <TodoList/>
     </div>
 </template>
 
@@ -22,6 +23,7 @@
     import router from '@/router'
     import CommentWrite from '../comment/CommentWrite.vue'
     import CommentList from '../comment/CommentList.vue'
+    import TodoList from '@/components/todo/TodoList.vue'
 
     const route = useRoute()
     const diaryId = route.params.diaryId

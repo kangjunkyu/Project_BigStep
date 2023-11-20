@@ -33,7 +33,6 @@ export const useUserStore = defineStore('user', () => {
     .then((response) => {
         searchResult.value = response.data
         searchWord.value = word;
-        console.log(searchResult.value)
         router.push("/search/result")
     })
     .catch(() => {
