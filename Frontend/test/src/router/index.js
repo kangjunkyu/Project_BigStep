@@ -119,18 +119,6 @@ const router = createRouter({
           path: "/follow",
           name: "follow",
           component: FollowView,
-          children: [
-            {
-              path: "following",
-              name: "following",
-              component: followingList,
-            },
-            {
-              path: "follower",
-              name: "follower",
-              component: followerList,
-            },
-          ],
         },
         {
           path: "/my-page",
@@ -151,6 +139,16 @@ const router = createRouter({
               path: "/naverupdate",
               name: "naverupdate",
               component: UserNaverUpdate,
+            },
+            {
+              path: "following",
+              name: "following",
+              component: followingList,
+            },
+            {
+              path: "follower",
+              name: "follower",
+              component: followerList,
             },
           ],
         },

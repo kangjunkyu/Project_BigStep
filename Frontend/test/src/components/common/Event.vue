@@ -2,27 +2,30 @@
   <button type="button" @click="searchWeather" :disabled="view || loading">
     오늘은 이 운동 어떠세요?!?!
   </button>
-  <div id="wrapCard">
-    <div class="card">
-      <div class="card_front">
-        <div v-if="view">
-          <!-- <p style="font-size: 30px">국가명: {{ country }}</p> -->
-          <p style="font-size: 30px">도시명: {{ city }}</p>
-          <br />
-          <p style="font-size: 20px">온도: {{ temp }}</p>
-          <p style="font-size: 20px">현재날씨 : {{ weather }}</p>
-          <!-- <p>최저온도 : {{ temp_min }}</p>
+  <div class="TotalEvent">
+    <div id="wrapCard">
+      <div class="card">
+        <div class="card_front">
+          <div v-if="view">
+            <!-- <p style="font-size: 30px">국가명: {{ country }}</p> -->
+            <p style="font-size: 30px">도시명: {{ city }}</p>
+            <br />
+            <p style="font-size: 20px">온도: {{ temp }}</p>
+            <p style="font-size: 20px">현재날씨 : {{ weather }}</p>
+            <!-- <p>최저온도 : {{ temp_min }}</p>
     <p>최대온도 : {{ temp_max }}</p> -->
+          </div>
+          <div v-if="loading">로딩 중...</div>
+          <div v-if="error">{{ error }}</div>
         </div>
-        <div v-if="loading">로딩 중...</div>
-        <div v-if="error">{{ error }}</div>
-      </div>
-      <div class="card_back">
-        <p style="font-size: 30px">현재 온도에 맞는 운동을 추천해드려요</p>
-        <p style="font-size: 30px">야외운동</p>
-        <p style="font-size: 30px">런닝</p>
+        <div class="card_back">
+          <p style="font-size: 30px">현재 온도에 맞는 운동을 추천해드려요</p>
+          <p style="font-size: 30px">야외운동</p>
+          <p style="font-size: 30px">런닝</p>
+        </div>
       </div>
     </div>
+    <div style="width: 300px; text-align: center">dododododo</div>
   </div>
 </template>
 
@@ -78,6 +81,11 @@ export default {
 </script>
 
 <style>
+.TotalEvent {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
 .card_front {
   display: flex;
   flex-direction: column;
