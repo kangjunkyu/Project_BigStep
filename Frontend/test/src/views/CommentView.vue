@@ -1,6 +1,7 @@
 <template>
   <div style="background-color: beige; padding: 40px">
-    <h4>Comment</h4>
+    <h4>Comment write</h4>
+    <br />
     <CommentWrite />
     <CommentList />
   </div>

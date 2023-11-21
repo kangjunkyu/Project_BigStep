@@ -1,16 +1,4 @@
 <template>
-  <!-- <div>
-      <RouterLink to="/login" :class="{ hidden: userStore.loginUser.id }"
-        >Login</RouterLink
-      >
-      <div :class="{ hidden: !userStore.loginUser.id }">
-        <a @click="logout">Logout</a> |
-        <RouterLink to="/diary/list">Diary</RouterLink> |
-        <RouterLink to="/follow">Follow</RouterLink> |
-        <RouterLink to="/my-page">MyPage</RouterLink>
-      </div>
-    </div> -->
-
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"

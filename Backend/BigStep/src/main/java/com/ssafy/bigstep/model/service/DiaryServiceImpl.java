@@ -52,5 +52,11 @@ public class DiaryServiceImpl implements DiaryService{
 	public int increaseLikeCnt(int diaryId) {
 		return dDao.increaseLikeCnt(diaryId);
 	}
+	
+	@Override
+	public List<Diary> selectFollowingDiarys(String userId) {
+		return dDao.selectFollowingDiarys(userId);
+	}
+
 
 }

@@ -199,7 +199,7 @@
           </div>
         </div>
 
-        <div class="flex items-start mb-6">
+        <!-- <div class="flex items-start mb-6">
           <div class="flex items-center h-5">
             <input
               id="remember"
@@ -217,7 +217,7 @@
               >terms and conditions</a
             >.</label
           >
-        </div>
+        </div> -->
         <button
           type="submit"
           @click="signupUser"

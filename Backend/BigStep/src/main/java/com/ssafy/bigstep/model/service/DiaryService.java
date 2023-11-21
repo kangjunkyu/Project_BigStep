@@ -23,4 +23,6 @@ public interface DiaryService {
 	//increase likeCnt
 	public int increaseLikeCnt(int diaryId);
 	
+	public List<Diary> selectFollowingDiarys(String userId);
+	
 }

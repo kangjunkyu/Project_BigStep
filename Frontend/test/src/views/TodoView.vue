@@ -1,6 +1,6 @@
 <template>
-  <div style="background-color: gray; padding: 20px">
-    <h4>Todo</h4>
+  <div style="width: 45%">
+    <!-- <h4>Todo</h4> -->
     <RouterView />
   </div>
 </template>

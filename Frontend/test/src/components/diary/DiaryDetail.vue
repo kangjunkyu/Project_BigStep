@@ -1,44 +1,55 @@
 <template>
   <div>
-    <h4>diary detail</h4>
-    <button
-      @click="showUpdate"
-      class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-    >
-      수정
-    </button>
-    <button
-      @click="deleteDiary"
-      class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
-    >
-      삭제
-    </button>
-    <img
-      :src="`http://localhost:7777/upload/${diaryStore.selectedDiary.img}`"
-    />
-    <div>
-      <p
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-      >
-        {{ diaryStore.selectedDiary.title }}
-      </p>
-      <p
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-      >
-        {{ diaryStore.selectedDiary.userId }}
-      </p>
-      <p
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-      >
-        {{ diaryStore.selectedDiary.date }}
-      </p>
-      <p
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-      >
-        {{ diaryStore.selectedDiary.content }}
-      </p>
+    <div id="twoinone">
+      <div id="card_diary">
+        <div class="check">
+          <div style="font-size: 30px">diary detail</div>
+          <div>
+            <button
+              @click="showUpdate"
+              class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
+              수정
+            </button>
+            <button
+              @click="deleteDiary"
+              class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
+            >
+              삭제
+            </button>
+          </div>
+        </div>
+        <img
+          v-show="diaryStore.selectedDiary.img"
+          :src="`http://localhost:7777/upload/${diaryStore.selectedDiary.img}`"
+        />
+        <div>
+          <p
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+          >
+            {{ diaryStore.selectedDiary.title }}
+          </p>
+          <p
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+          >
+            {{ diaryStore.selectedDiary.userId }}
+          </p>
+          <p
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+          >
+            {{ diaryStore.selectedDiary.date }}
+          </p>
+          <p
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+          >
+            {{ diaryStore.selectedDiary.content }}
+          </p>
+        </div>
+      </div>
+      <div id="card_todo">
+        <TodoView />
+      </div>
     </div>
-    <TodoView />
     <CommentView />
   </div>
 </template>
@@ -70,6 +81,11 @@ watch(selectedDiary, () => {
   commentStore.getCommentList();
 });
 
+// const todoList = computed(() => diaryStore.todoList);
+// watch(todoList, () => {
+//   diaryStore.getTodoList(diaryStore.selectedDiary.diaryId);
+// });
+
 const showUpdate = function () {
   router.push("/diary/update/" + diaryStore.selectedDiary.diaryId);
 };
@@ -85,7 +101,27 @@ const deleteDiary = function () {
 }
 
 p {
-  padding: 15px;
+  padding: 30px;
   margin: 20px;
+}
+
+#twoinone {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+#card_diary {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+}
+#card_todo {
+  /* width: 100%; */
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>

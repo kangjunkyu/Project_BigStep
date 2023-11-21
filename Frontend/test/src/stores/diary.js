@@ -98,6 +98,7 @@ export const useDiaryStore = defineStore(
         .put(REST_TODO_URL, todo)
         .then(() => {
           alert("test");
+          getTodoList(todo.diaryId);
           router.push({ name: "todolist" });
         })
         .catch(() => {});
