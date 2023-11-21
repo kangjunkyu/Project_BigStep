@@ -1,11 +1,22 @@
 <template>
-  <!-- <NavTest /> -->
-  <HeaderNav />
-  <!-- <TestTem /> -->
-  <div class="mainbackground">
-    <!-- <input type="text" v-model="word" @keyup.enter="search" />
+  <div v-if="userStore.loginUser == null">
+    <HeaderNav />
+    <!-- <TestTem /> -->
+    <div class="mainbackground">
+      <!-- <input type="text" v-model="word" @keyup.enter="search" />
+        <button @click="search">검색</button> -->
+      <RouterView />
+    </div>
+  </div>
+  <div v-else>
+    <NavTest />
+    <!-- <HeaderNav /> -->
+    <!-- <TestTem /> -->
+    <div class="mainbackground">
+      <!-- <input type="text" v-model="word" @keyup.enter="search" />
     <button @click="search">검색</button> -->
-    <RouterView />
+      <!-- <RouterView /> -->
+    </div>
   </div>
 </template>
 

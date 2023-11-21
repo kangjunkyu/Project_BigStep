@@ -14,7 +14,7 @@ export const useUserStore = defineStore(
         .post(REST_USER_URL + "login", user)
         .then((response) => {
           loginUser.value = response.data;
-          router.push({ name: "home" });
+          router.push({ name: "diaryList" });
         })
         .catch(() => {
           alert("로그인 실패");
@@ -24,7 +24,7 @@ export const useUserStore = defineStore(
     const logout = function () {
       axios.post(REST_USER_URL + "logout").then(() => {
         loginUser.value = {};
-        router.push({ name: "home" });
+        router.push({ name: "/" });
       });
     };
 

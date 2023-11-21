@@ -19,7 +19,7 @@
         to="/"
         class="flex items-center space-x-3 rtl:space-x-reverse"
       >
-        <img src="../../assets/logo.jpeg" class="h-8" alt="Bigstep Logo" />
+        <img src="../../assets/곰발바닥2.png" class="h-8" alt="Bigstep Logo" />
         <span
           class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
           >Bigstep</span
@@ -155,7 +155,7 @@
               >signup</RouterLink
             >
           </li>
-          <li>
+          <!-- <li>
             <a
               @click="logout"
               href="#"
@@ -190,7 +190,7 @@
               class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >Event</RouterLink
             >
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
