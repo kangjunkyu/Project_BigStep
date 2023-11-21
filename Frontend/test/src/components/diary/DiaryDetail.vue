@@ -4,7 +4,7 @@
       <div id="card_diary">
         <div class="check">
           <div style="font-size: 30px">diary detail</div>
-          <div>
+          <div v-show="selectedDiary.userId === userStore.loginUser.id">
             <button
               @click="showUpdate"
               class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -19,17 +19,25 @@
             </button>
           </div>
         </div>
-        <img
-          v-show="diaryStore.selectedDiary.img"
-          :src="`http://localhost:7777/upload/${diaryStore.selectedDiary.img}`"
-        />
+        <div style="display: flex; justify-content: center; padding-top: 20px">
+          <img
+            style="height: 300px; width: 300px"
+            v-show="diaryStore.selectedDiary.img"
+            :src="`http://localhost:7777/upload/${diaryStore.selectedDiary.img}`"
+          />
+        </div>
         <div>
           <p
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           >
             {{ diaryStore.selectedDiary.title }}
+            <div>
+            {{ diaryStore.selectedDiary.userId }} /{{
+              diaryStore.selectedDiary.date.substring(0, 10)
+            }}
+            </div>
           </p>
-          <p
+          <!-- <p
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           >
             {{ diaryStore.selectedDiary.userId }}
@@ -38,15 +46,16 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           >
             {{ diaryStore.selectedDiary.date }}
-          </p>
+          </p> -->
           <p
+            style="height: 200px"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           >
             {{ diaryStore.selectedDiary.content }}
           </p>
         </div>
       </div>
-      <div id="card_todo">
+      <div id="card_todo" v-show="selectedDiary.userId === userStore.loginUser.id">
         <TodoView />
       </div>
     </div>
@@ -70,6 +79,7 @@ const diaryId = route.params.diaryId;
 const userStore = useUserStore();
 const diaryStore = useDiaryStore();
 const commentStore = useCommentStore();
+
 
 const selectedDiary = computed(() => diaryStore.selectedDiary);
 onBeforeMount(() => {
@@ -103,11 +113,14 @@ const deleteDiary = function () {
 p {
   padding: 30px;
   margin: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #twoinone {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* margin: 10px; */
   flex-wrap: wrap;
 }
 #card_diary {
@@ -117,6 +130,7 @@ p {
 }
 #card_todo {
   /* width: 100%; */
+  margin-left: 30px;
 }
 
 .check {
