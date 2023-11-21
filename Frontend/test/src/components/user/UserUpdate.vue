@@ -18,6 +18,7 @@
         <input type="text" v-model="user.phone"><br>
         <label>Address : </label>
         <input type="text" v-model="user.address"><br>
+        
         <br>
         <label>height : </label>
         <input type="text" v-model="user.height"><br>
@@ -33,8 +34,8 @@
         </select><br>
         <label>공개 여부 : </label>
         <select v-model="user.public">
-            <option value="true">공개</option>
-            <option value="true">비공개</option>
+            <option value=true>공개</option>
+            <option value=false>비공개</option>
         </select>
         <br>
         <button @click="updateUser">수정 완료</button>
@@ -42,19 +43,21 @@
 </template>
 
 <script setup>
-    import {ref} from 'vue'
+    import {ref, computed} from 'vue'
     import {useUserStore} from '@/stores/user'
+   
 
     const userStore = useUserStore()
 
     const user = ref({
         id: userStore.loginUser.id,
-        pw: "",
+        pw: userStore.loginUser.pw,
         name: userStore.loginUser.name,
         nickname: userStore.loginUser.nickname,
         email: userStore.loginUser.email,
         phone: userStore.loginUser.phone,
         address: userStore.loginUser.address,
+        uid: userStore.loginUser.uid,
         height: userStore.loginUser.height,
         weight: userStore.loginUser.weight,
         age: userStore.loginUser.age,
@@ -62,7 +65,7 @@
         public: userStore.loginUser.public,
     })
 
-    const pw_check = ref("")
+    const pw_check = ref(userStore.loginUser.pw)
 
     const updateUser = function(){
         if(user.value.pw !== pw_check.value){

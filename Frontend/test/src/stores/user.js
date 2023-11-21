@@ -52,20 +52,29 @@ export const useUserStore = defineStore('user', () => {
     })
   }
 
+  const accessToken = ref("")
   const checkToken = function(token){
     axios.get(REST_USER_URL+`/uid/${token}`)
     .then((response) => {
       console.log(response.data)
       // 로그인
+      login(response.data)
     })
     .catch((error)=>{
       if(error.response.status === 401){
         console.log("401 에러")
-        // 유저등록 페이지로 이동(uid를 넣어서)
+        alert("연동된 계정이 없습니다!!")
+        router.push("/")
       }else{
         console.log("500 에러")
       }
     })
+  }
+
+  const updateToken = function(token){
+    console.log(token)
+    loginUser.value.uid = token
+    updateUser(loginUser.value)
   }
 
   const updateUser = function(user){
@@ -73,6 +82,7 @@ export const useUserStore = defineStore('user', () => {
     .then(()=>{
       loginUser.value = user
       alert("수정 완료")
+      router.push("/my-page")
     })
     .catch(()=>{
 
@@ -80,5 +90,6 @@ export const useUserStore = defineStore('user', () => {
   }
 
 
-  return {loginUser, login, logout, search, searchWord, searchResult, signupUser, checkToken, updateUser}
+  return {loginUser, login, logout, search, searchWord, searchResult, signupUser,
+     checkToken, updateUser, accessToken, updateToken}
 },{persist: true})

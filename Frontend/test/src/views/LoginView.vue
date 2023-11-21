@@ -15,9 +15,9 @@
   
   <script setup>
   
-    import {ref} from 'vue'
+    import {ref,} from 'vue'
     import { useUserStore } from '@/stores/user';
-import LoginNaver from '../components/login/LoginNaver.vue';
+    import LoginNaver from '@/components/login/LoginNaver.vue';
   
     const userStore = useUserStore()
 

@@ -11,7 +11,7 @@ CREATE TABLE `users` (
     `phone` varchar(40) NOT NULL,
     `address` varchar(100) NOT NULL,
     
-    `uid` varchar(80),
+    `uid` varchar(100),
     
     `height` INT,
     `weight` INT,
