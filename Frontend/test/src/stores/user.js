@@ -24,7 +24,7 @@ export const useUserStore = defineStore(
     const logout = function () {
       axios.post(REST_USER_URL + "logout").then(() => {
         loginUser.value = {};
-        router.push({ name: "/" });
+        router.push({ name: "home" });
       });
     };
 

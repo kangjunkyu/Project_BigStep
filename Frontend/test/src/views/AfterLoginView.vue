@@ -34,7 +34,6 @@
         </RouterLink>
         <a
           class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
-          href=""
           @click="logout"
         >
           Logout

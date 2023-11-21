@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
+import BeforeLoginView from "@/views/BeforeLoginView.vue";
 import LoginView from "@/views/LoginView.vue";
 import SignUpView from "@/views/SignUpView.vue";
+import AfterLoginView from "@/views/AfterLoginView.vue";
 import DiaryView from "@/views/DiaryView.vue";
 import FollowView from "@/views/FollowView.vue";
 import MyPageView from "@/views/MyPageView.vue";
@@ -29,138 +31,152 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: HomeView,
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: LoginView,
-    },
-    {
-      path: "/naverlogin",
-      name: "naverlogin",
-      component: NaverLoginView,
-    },
-    {
-      path: "/signup",
-      name: "signup",
-      component: SignUpView,
-    },
-    {
-      path: "/diary",
-      name: "diary",
-      component: DiaryView,
+      name: "beforelogin",
+      component: BeforeLoginView,
       children: [
         {
-          path: "list",
-          name: "diaryList",
-          component: DiaryList,
+          path: "",
+          name: "home",
+          component: HomeView,
         },
         {
-          path: "detail/:diaryId",
-          name: "diaryDetail",
-          component: DiaryDetail,
+          path: "/login",
+          name: "login",
+          component: LoginView,
+        },
+        {
+          path: "/naverlogin",
+          name: "naverlogin",
+          component: NaverLoginView,
+        },
+        {
+          path: "/signup",
+          name: "signup",
+          component: SignUpView,
+        },
+      ],
+    },
+    {
+      path: "/main",
+      name: "main",
+      component: AfterLoginView,
+      children: [
+        {
+          path: "/diary",
+          name: "diary",
+          component: DiaryView,
           children: [
             {
-              path: "",
-              name: "todolist",
-              component: TodoList,
+              path: "list",
+              name: "diaryList",
+              component: DiaryList,
             },
             {
-              path: "todo/detail/:todoId",
-              name: "tododetail",
+              path: "detail/:diaryId",
+              name: "diaryDetail",
+              component: DiaryDetail,
+              children: [
+                {
+                  path: "",
+                  name: "todolist",
+                  component: TodoList,
+                },
+                {
+                  path: "todo/detail/:todoId",
+                  name: "tododetail",
+                  component: TodoDetail,
+                },
+                {
+                  path: "todo/create",
+                  name: "todocreate",
+                  component: TodoCreate,
+                },
+                {
+                  path: "todo/update/:todoId",
+                  name: "todoupdate",
+                  component: TodoUpdate,
+                },
+              ],
+            },
+            {
+              path: "write",
+              name: "diaryWrite",
+              component: DiaryWrite,
+            },
+            {
+              path: "update/:diaryId",
+              name: "diaryUpdate",
+              component: DiaryUpdate,
+            },
+            {
+              path: "todo/detail",
+              name: "todoDetail",
               component: TodoDetail,
-            },
-            {
-              path: "todo/create",
-              name: "todocreate",
-              component: TodoCreate,
-            },
-            {
-              path: "todo/update/:todoId",
-              name: "todoupdate",
-              component: TodoUpdate,
             },
           ],
         },
         {
-          path: "write",
-          name: "diaryWrite",
-          component: DiaryWrite,
+          path: "/follow",
+          name: "follow",
+          component: FollowView,
+          children: [
+            {
+              path: "following",
+              name: "following",
+              component: followingList,
+            },
+            {
+              path: "follower",
+              name: "follower",
+              component: followerList,
+            },
+          ],
         },
         {
-          path: "update/:diaryId",
-          name: "diaryUpdate",
-          component: DiaryUpdate,
+          path: "/my-page",
+          name: "mypage",
+          component: MyPageView,
+          children: [
+            {
+              path: "",
+              name: "userpagemain",
+              component: UserPageMain,
+            },
+            {
+              path: "update",
+              name: "userupdate",
+              component: UserUpdate,
+            },
+            {
+              path: "/naverupdate",
+              name: "naverupdate",
+              component: UserNaverUpdate,
+            },
+          ],
         },
         {
-          path: "todo/detail",
-          name: "todoDetail",
-          component: TodoDetail,
-        },
-      ],
-    },
-    {
-      path: "/follow",
-      name: "follow",
-      component: FollowView,
-      children: [
-        {
-          path: "following",
-          name: "following",
-          component: followingList,
+          path: "/search",
+          name: "search",
+          component: SearchView,
+          children: [
+            {
+              path: "result",
+              name: "searchResult",
+              component: SearchResult,
+            },
+          ],
         },
         {
-          path: "follower",
-          name: "follower",
-          component: followerList,
-        },
-      ],
-    },
-    {
-      path: "/my-page",
-      name: "mypage",
-      component: MyPageView,
-      children: [
-        {
-          path: "",
-          name: "userpagemain",
-          component: UserPageMain,
-        },
-        {
-          path: "update",
-          name: "userupdate",
-          component: UserUpdate,
-        },
-        {
-          path: "/naverupdate",
-          name: "naverupdate",
-          component: UserNaverUpdate,
-        },
-      ],
-    },
-    {
-      path: "/search",
-      name: "search",
-      component: SearchView,
-      children: [
-        {
-          path: "result",
-          name: "searchResult",
-          component: SearchResult,
-        },
-      ],
-    },
-    {
-      path: "/Event",
-      name: "Event",
-      component: EventView,
-      children: [
-        {
-          path: "Eventresult",
-          name: "EventResult",
-          component: Event,
+          path: "/Event",
+          name: "Event",
+          component: EventView,
+          children: [
+            {
+              path: "Eventresult",
+              name: "EventResult",
+              component: Event,
+            },
+          ],
         },
       ],
     },
