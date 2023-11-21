@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Naver Login Access Pages</p>
+        <p>Naver Update Pages</p>
     </div>
 </template>
 
@@ -12,13 +12,11 @@
     export default{
         mounted(){
             const userStore = useUserStore()
-            const naver_id_login = new window.naver_id_login("VuKdfgG2Qc1tgI8UjxPb","http://localhost:5173/naverlogin");
+            const naver_id_login = new window.naver_id_login("VuKdfgG2Qc1tgI8UjxPb","http://localhost:5173/naverupdate");
             const accessToken = naver_id_login.getAccessToken();
-            
-            userStore.checkToken(accessToken)
-            
-            // window.self.close()
-            router.push("/") 
+
+            userStore.updateToken(accessToken)
+            router.push("/my-page")
         }
     }
 </script>

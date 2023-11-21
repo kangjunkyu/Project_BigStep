@@ -20,6 +20,7 @@ import TodoUpdate from '@/components/todo/TodoUpdate.vue'
 import NaverLoginView from '@/views/NaverLoginView.vue'
 import UserPageMain from '@/components/user/UserPageMain.vue'
 import UserUpdate from '@/components/user/UserUpdate.vue'
+import UserNaverUpdate from '@/components/user/UserNaverUpdate.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -130,7 +131,12 @@ const router = createRouter({
           path: "update",
           name: 'userupdate',
           component: UserUpdate
-        },      
+        },
+        {
+          path: "/naverupdate",
+          name: 'naverupdate',
+          component: UserNaverUpdate
+        },         
       ]
     },
     {

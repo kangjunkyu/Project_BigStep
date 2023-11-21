@@ -7,7 +7,7 @@
 <script>
     export default{
         mounted(){
-            const naver_id_login = new window.naver_id_login("VuKdfgG2Qc1tgI8UjxPb", "http://localhost:5173/naverlogin");
+            const naver_id_login = new window.naver_id_login("VuKdfgG2Qc1tgI8UjxPb", "http://localhost:5173/naverupdate");
             const state = naver_id_login.getUniqState();
             naver_id_login.setButton("white",1,40);
             naver_id_login.setState(state);

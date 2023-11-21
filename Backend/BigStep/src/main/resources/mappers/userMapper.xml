@@ -26,7 +26,7 @@
 
 	<update id="updateUser" parameterType="User">
 		UPDATE users 
-		SET pw = #{pw}, nickname = #{nickname}, phone = #{phone}, address = #{address}, 
+		SET pw = #{pw}, nickname = #{nickname}, phone = #{phone}, address = #{address}, uid = #{UID},
 		height = #{height}, weight = #{weight}, age = #{age}, gender = #{gender}, isPublic = #{isPublic}
 		WHERE id = #{id}
 	</update>
