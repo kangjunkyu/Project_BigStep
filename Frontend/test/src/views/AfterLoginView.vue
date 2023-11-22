@@ -67,6 +67,7 @@ const userStore = useUserStore();
 const word = ref("");
 const search = function () {
   userStore.search(word.value);
+  word.value = "";
 };
 </script>
 

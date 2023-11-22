@@ -2,9 +2,9 @@
     <div>
         <h4>SearchResult</h4>
         <p v-if="userStore.searchResult.length === 0">검색된 유저가 없습니다.</p>
-        <ul v-else>
+        <div v-else>
             <SearchResultItem v-for="user in userStore.searchResult" :key="user.id" :user="user"/>
-        </ul>
+        </div>
     </div>
 </template>
 

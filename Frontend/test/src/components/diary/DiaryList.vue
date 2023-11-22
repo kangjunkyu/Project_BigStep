@@ -2,9 +2,10 @@
   <div>
     <h4>DiaryList</h4>
     <button @click="showWrite">작성</button>
+    <VCalendar :is-dark="isDark" title-position="left" :attributes="attr"/>
     <ul>
       <DiaryListItem
-        v-for="diary in diaryStore.diaryList"
+        v-for="diary in diaryList"
         :key="diary.diaryId"
         :diary="diary"
       />
@@ -20,13 +21,43 @@ import router from "@/router";
 
 const diaryStore = useDiaryStore();
 
+const diaryList = computed(() => diaryStore.diaryList)
+
 onMounted(() => {
   diaryStore.getList();
 });
 
+const isDark = computed(() => localStorage.getItem('color-theme') === 'dark')
+
 const showWrite = function () {
   router.push("/diary/write");
 };
+
+// const attr = ref([
+// { 
+//     dot: 'green',
+//     dates: "2023-11-20 00:00:00",
+//     popover:{
+//       label: "test"
+//     }
+//   },
+// ])
+
+const attr = computed(() => [
+  ...diaryList.value.map(diary => ({
+    dates: diary.date,
+    dot: {
+      color: "green",
+    },
+    popover:{
+      label: diary.title,
+      visibility:'focus'
+    },
+    
+  }))
+])
+
+
 </script>
 
 <style scoped></style>
