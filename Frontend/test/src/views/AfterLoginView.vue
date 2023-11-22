@@ -49,7 +49,7 @@
         placeholder="Search..."
       />
     </aside>
-    <main class="flex grow bg-gray-100 p-6" style="min-height: 100vh">
+    <main class="flex-1 bg-gray-100 p-6" style="min-height: 100vh">
       <RouterView />
     </main>
   </div>

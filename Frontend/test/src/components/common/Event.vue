@@ -1,17 +1,5 @@
 <template>
   <br />
-  <div
-    @click="
-      () => {
-        searchWeather();
-        selectInside();
-        selectOutside();
-      }
-    "
-    :disabled="view || loading"
-  >
-    버튼 이미지
-  </div>
   <!-- <div @click="">운동 변경</div> -->
   <div class="TotalEvent">
     <div id="wrapCard">
@@ -104,7 +92,7 @@
 
 <script setup>
 import axios from "axios";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const outsideWorkout = ref([
   "축구",
@@ -181,6 +169,12 @@ const selectInside = () => {
 //   class1_3: weather.value === "Clear",
 //   class1_4: weather.value === "Rain",
 // });
+
+onMounted(()=>{
+  searchWeather();
+  selectInside();
+  selectOutside();
+})
 </script>
 
 <style>
@@ -254,9 +248,7 @@ const selectInside = () => {
   transform: rotateY(0deg);
   transition: 2s;
 }
-.card_front:hover {
-  /* transform: perspective(1000px) rotateY(180deg); */
-}
+
 
 .card_back {
   /* justify-content: center;

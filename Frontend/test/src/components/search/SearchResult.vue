@@ -1,10 +1,11 @@
 <template>
-    <div>
-        <h4>SearchResult</h4>
+    <div class="grid grid-cols-2 gap-4">
         <p v-if="userStore.searchResult.length === 0">검색된 유저가 없습니다.</p>
-        <div v-else>
-            <SearchResultItem v-for="user in userStore.searchResult" :key="user.id" :user="user"/>
-        </div>
+        <template v-else>
+            <template v-for="user in userStore.searchResult" :key="user.id">
+                <SearchResultItem v-if="user.id !== userStore.loginUser.id" :user="user"/>
+            </template>
+        </template>
     </div>
 </template>
 

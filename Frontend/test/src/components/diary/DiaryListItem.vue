@@ -16,7 +16,7 @@
       </li>
     </div>
   </div> -->
-  <div class="min-w-[300px] w-full max-w-sm" style="width:30%;">
+  <div class="min-w-[364px] w-full max-w-sm" style="width:30%;">
     <div class="w-full max-w-sm bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden mx-auto"
       @click="showDetail">
       <div class="flex justify-between items-center px-6 py-4">

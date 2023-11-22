@@ -33,7 +33,7 @@ CREATE TABLE `diarys` (
     
     `likeCnt` INT default 0,
     
-    CONSTRAINT `diary_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
+    CONSTRAINT `diary_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE `todos` (
@@ -50,8 +50,8 @@ CREATE TABLE `todos` (
     
     `is_complete` boolean default false,
 	
-    CONSTRAINT `todo_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
-    CONSTRAINT `todo_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)
+    CONSTRAINT `todo_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `todo_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 
@@ -63,8 +63,8 @@ CREATE TABLE `comments` (
     `content` TEXT NOT NULL,
     
     `reg_date` TIMESTAMP default current_timestamp,
-	CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
-    CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)
+	CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE `likes` (
@@ -72,20 +72,23 @@ CREATE TABLE `likes` (
 	`userid` varchar(40) NOT NULL,
     
     PRIMARY KEY(`diaryid`, `userid`),
-	CONSTRAINT `like_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
-    CONSTRAINT `like_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`)
+	CONSTRAINT `like_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `like_ibfk_2` FOREIGN KEY (`diaryid`) REFERENCES `diarys` (`diaryid`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE `follows` (
 	`followerid` varchar(40) NOT NULL,
     `followingid` varchar(40) NOT NULL,
 
-    PRIMARY KEY(`followerid`, `followingid`)
+    PRIMARY KEY(`followerid`, `followingid`),
+    CONSTRAINT `follow_ibfk1` FOREIGN KEY (`followerid`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `follow_ibfk2` FOREIGN KEY (`followingid`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 
 INSERT INTO users (id, pw, name, nickname, email, phone, address)
-VALUES ("ssafy", "1234", "강준규", "강준규", "ssafy@ssafy.com", "010-1111-1111", "123");
+VALUES ("ssafy", "1234", "강준규", "강준규", "ssafy@ssafy.com", "010-1111-1111", "123"),
+("ssafy2", "1234", "고은석", "고은석", "ssafy2@ssafy.com", "010-2222-2222", "456");
 
 INSERT INTO diarys (userid, title, content, date)
 VALUES ("ssafy", "테스트 제목", "테스트 content", "20231117");

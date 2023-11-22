@@ -12,11 +12,7 @@
 	
 	
 	<!-- delete -->
-	<delete id="deleteDiary" parameterType="int">
-		DELETE FROM todos WHERE diaryid = #{diaryId};
-		DELETE FROM comments WHERE diaryid = #{diaryId};
-		DELETE FROM likes WHERE diaryid = #{diaryId};
-	
+	<delete id="deleteDiary" parameterType="int">	
 		DELETE FROM diarys WHERE diaryid = #{diaryId};
 	</delete>
 	
