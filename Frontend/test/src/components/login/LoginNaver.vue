@@ -12,7 +12,7 @@ export default {
       "http://localhost:5173/naverlogin"
     );
     const state = naver_id_login.getUniqState();
-    naver_id_login.setButton("white", 1, 40);
+    naver_id_login.setButton("green", 3, 40);
     naver_id_login.setState(state);
     // naver_id_login.setPopup();
     naver_id_login.init_naver_id_login();

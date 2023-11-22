@@ -2,7 +2,8 @@
   <div class="flex flex-row gap-24">
     
     <div class="flex flex-col">
-    <VCalendar :is-dark="isDark" title-position="left" :attributes="attr">
+    <VDatePicker :is-dark="isDark" title-position="left" :attributes="attr"
+    v-model="date" mode="date">
     <template #footer>
       <div class="w-full px-4 pb-3">
         <button
@@ -13,7 +14,7 @@
         </button>
       </div>
     </template>
-    </VCalendar>
+    </VDatePicker>
     </div>
 
     <div class="flex flex-row flex-wrap gap-10">
@@ -43,9 +44,16 @@ onMounted(() => {
 
 const isDark = computed(() => localStorage.getItem('color-theme') === 'dark')
 
+const date = ref(new Date());
+
 const showWrite = function () {
-  router.push("/diary/write");
+  console.log(date.value.getDate())
+  // router.push({name: 'diaryWriteWithDate', params: {year: date.value.getFullYear(), month:date.value.getMonth(), day:date.value.getDate()}}, );
+  router.push(`/diary/write/${date.value.getFullYear()}/${date.value.getMonth()}/${date.value.getDate()}`)
+  // router.push(`/diary/write/${date.value}`)
 };
+
+
 
 // const attr = ref([
 // { 

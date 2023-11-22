@@ -7,7 +7,8 @@
         to="/"
         class="flex items-center space-x-3 rtl:space-x-reverse"
       >
-        <img src="@/assets/곰발바닥2.png" class="h-8" alt="Bigstep Logo" />
+        <img v-if="isDark" src="@/assets/곰발바닥2.png" class="h-8" alt="Bigstep Logo" />
+        <img v-else src="@/assets/곰발바닥.png" class="h-8" alt="Bigstep Logo"/>
         <span
           class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
           >Bigstep</span
@@ -190,8 +191,9 @@
 
 <script setup>
 import { useUserStore } from "@/stores/user";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
+const isDark = ref(true)
 const logout = function () {
   userStore.logout();
 };
@@ -206,11 +208,15 @@ const darkToggle = function(){
     if (localStorage.getItem('color-theme') !== 'dark') {
         document.documentElement.classList.add('dark');
         localStorage.setItem("color-theme", 'dark')
+        isDark.value = true;
     } else {
         document.documentElement.classList.remove('dark')
         localStorage.setItem("color-theme", 'white')
+        isDark.value = false;
     }
 }
+
+
 </script>
 
 <style scoped>
