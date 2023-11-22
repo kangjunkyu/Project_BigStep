@@ -1,88 +1,243 @@
 <template>
-  <button type="button" @click="searchWeather" :disabled="view || loading">
-    오늘은 이 운동 어떠세요?!?!
-  </button>
+  <br />
+  <div
+    @click="
+      () => {
+        searchWeather();
+        selectInside();
+        selectOutside();
+      }
+    "
+    :disabled="view || loading"
+  >
+    버튼 이미지
+  </div>
+  <!-- <div @click="">운동 변경</div> -->
   <div class="TotalEvent">
     <div id="wrapCard">
       <div class="card">
-        <div class="card_front">
+        <!-- <div class="card_front"> -->
+        <div
+          :class="{
+            class1_1: weather == 'Snows',
+            class1_2: weather == 'Clouds',
+            class1_3: weather == 'Clear',
+            class1_4: weather == 'Rain',
+          }"
+        >
           <div v-if="view">
-            <!-- <p style="font-size: 30px">국가명: {{ country }}</p> -->
-            <p style="font-size: 30px">도시명: {{ city }}</p>
-            <br />
-            <p style="font-size: 20px">온도: {{ temp }}</p>
-            <p style="font-size: 20px">현재날씨 : {{ weather }}</p>
-            <!-- <p>최저온도 : {{ temp_min }}</p>
-    <p>최대온도 : {{ temp_max }}</p> -->
+            <p>마우스를 올려보세요</p>
+            <p>운동을 추천해드릴게요!</p>
+            <p>오늘도 힘차게 달려볼까요!</p>
+          </div>
+          <div v-else-if="!view">
+            위에 이미지를 클릭하면 운동을 추천해드려요!
           </div>
           <div v-if="loading">로딩 중...</div>
           <div v-if="error">{{ error }}</div>
         </div>
-        <div class="card_back">
-          <p style="font-size: 30px">현재 온도에 맞는 운동을 추천해드려요</p>
-          <p style="font-size: 30px">야외운동</p>
-          <p style="font-size: 30px">런닝</p>
+        <div class="card_back" v-show="view">
+          <div v-if="temp > 25">
+            <p style="font-size: 30px">너무 더워요</p>
+            <p style="font-size: 30px">실내운동</p>
+            <br />
+            <p style="font-size: 30px">{{ RandomInside }}</p>
+          </div>
+          <div v-else-if="temp > 16 && temp <= 25">
+            <p style="font-size: 30px">나가기 좋은 날씨에요</p>
+            <p style="font-size: 30px">야외운동</p>
+            <br />
+            <p style="font-size: 30px">{{ RandomOutside }}</p>
+          </div>
+          <div v-else-if="temp <= 16 && temp > 10">
+            <p style="font-size: 30px">시원하게 밖으로!</p>
+            <p style="font-size: 30px">야외운동</p>
+            <br />
+            <p style="font-size: 30px">{{ RandomOutside }}</p>
+          </div>
+          <div v-else-if="weather === 'Rain'">
+            <p style="font-size: 30px">비와요!! 실내운동!!</p>
+            <p style="font-size: 30px">실내운동</p>
+            <br />
+            <p style="font-size: 30px">{{ RandomInside }}</p>
+          </div>
+          <div v-else-if="weather === 'Snows'">
+            <p style="font-size: 30px">밖에 눈이 와요</p>
+            <p style="font-size: 30px">실내운동</p>
+            <br />
+            <p style="font-size: 30px">{{ RandomInside }}</p>
+          </div>
+          <div v-else="temp <= 10">
+            <p style="font-size: 30px">밖은 추우니 실내운동 어때요?</p>
+            <p style="font-size: 30px">실내운동</p>
+            <br />
+            <p style="font-size: 30px">{{ RandomInside }}</p>
+          </div>
+        </div>
+        <!-- <div
+          :class="{
+            class1_1: weather === 'Clouds',
+            class1_2: weather === 'Snow',
+            class1_3: weather === 'Rain',
+          }"
+        ></div> -->
+      </div>
+    </div>
+    <div
+      class="information"
+      v-show="view"
+      style="width: 300px; text-align: center; padding: 30px"
+    >
+      <div v-show="view">
+        <div>
+          <p style="font-size: 30px">도시명: {{ city }}</p>
+          <br />
+          <p style="font-size: 20px">온도: {{ temp }}</p>
+          <p>체감온도 : {{ feels_like }}</p>
+          <p style="font-size: 20px">현재날씨 : {{ weather }}</p>
+          <p>습도 : {{ humidity }}</p>
         </div>
       </div>
     </div>
-    <div style="width: 300px; text-align: center">dododododo</div>
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from "axios";
+import { ref } from "vue";
 
-export default {
-  name: "app",
-  data() {
-    return {
-      view: false,
-      country: "",
-      city: "",
-      loading: false,
-      error: null,
-      weather: null,
-      temp: null,
-      min_temp: null,
-      max_temp: null,
-    };
-  },
-  methods: {
-    searchWeather() {
-      const BASE_URL =
-        "http://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=b975d71d5c63adc9e2d0f09f598d5bef";
+const outsideWorkout = ref([
+  "축구",
+  "홈트",
+  "경보",
+  "런닝",
+  "줄넘기",
+  "풋살",
+  "등산",
+]);
+const insideWorkout = ref([
+  "헬스",
+  "볼링",
+  "숨쉬기운동",
+  "당구",
+  "탁구",
+  "수영",
+  "클라이밍",
+]);
 
-      this.loading = true;
-      this.error = null;
+const RandomOutside = ref(null);
+const RandomInside = ref(null);
 
-      axios
-        .get(BASE_URL)
-        .then((result) => {
-          this.country = result.data.sys.country;
-          this.city = result.data.name;
-          this.view = true;
-          this.weather = result.data.weather[0].description;
-          this.temp = Math.ceil(result.data.main.temp - 273.15);
-          this.temp_min = Math.ceil(result.data.main.temp_min - 273.15);
-          this.temp_max = Math.ceil(result.data.main.temp_max - 273.15);
-          console.log(result);
-        })
-        .catch((error) => {
-          this.error =
-            "날씨 정보를 가져오는 중 오류가 발생했습니다. 나중에 다시 시도해주세요.";
-          console.error("날씨 데이터를 가져오는 중 오류 발생:", error);
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
-  },
+const view = ref(false);
+const country = ref("");
+const city = ref("");
+const loading = ref(false);
+const error = ref(null);
+const weather = ref(null);
+const temp = ref(null);
+const feels_like = ref(null);
+const humidity = ref(null);
+
+const searchWeather = async () => {
+  const BASE_URL =
+    "http://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=b975d71d5c63adc9e2d0f09f598d5bef";
+
+  loading.value = true;
+  error.value = null;
+
+  try {
+    const result = await axios.get(BASE_URL);
+    country.value = result.data.sys.country;
+    city.value = result.data.name;
+    view.value = true;
+    weather.value = result.data.weather[0].main;
+    temp.value = Math.ceil(result.data.main.temp - 273.15);
+    feels_like.value = Math.ceil(result.data.main.feels_like - 273.15);
+    humidity.value = result.data.main.humidity;
+    console.log(result);
+  } catch (error) {
+    error.value =
+      "날씨 정보를 가져오는 중 오류가 발생했습니다. 나중에 다시 시도해주세요.";
+    console.error("날씨 데이터를 가져오는 중 오류 발생:", error);
+  } finally {
+    loading.value = false;
+  }
 };
+
+const selectOutside = () => {
+  const randomIndex = Math.floor(Math.random() * outsideWorkout.value.length);
+  RandomOutside.value = outsideWorkout[randomIndex];
+  console
+};
+
+const selectInside = () => {
+  const randomIndex = Math.floor(Math.random() * insideWorkout.value.length);
+  RandomInside.value = insideWorkout[randomIndex];
+};
+
+// const weatherClass = ref({
+//   class1_1: weather.value === "Snows",
+//   class1_2: weather.value === "Clouds",
+//   class1_3: weather.value === "Clear",
+//   class1_4: weather.value === "Rain",
+// });
 </script>
 
 <style>
+.information {
+  margin: 50px;
+  display: flex;
+  text-align: center;
+  /* justify-content: center; */
+  justify-content: space-between;
+  align-items: center;
+}
+.class1_1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  background-image: url("../../assets/snow.jpg");
+  background-size: cover;
+  transform: rotateY(0deg);
+  transition: 2s;
+}
+.class1_2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  background-image: url("../../assets/cloud.jpeg");
+  background-size: cover;
+  transform: rotateY(0deg);
+  transition: 2s;
+}
+.class1_3 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  background-image: url("../../assets/clear.jpg");
+  background-size: cover;
+  transform: rotateY(0deg);
+  transition: 2s;
+}
+.class1_4 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  background-image: url("../../assets/rain.jpeg");
+  background-size: cover;
+  transform: rotateY(0deg);
+  transition: 2s;
+}
 .TotalEvent {
-  width: 600px;
+  width: 800px;
   display: flex;
   justify-content: space-between;
 }
@@ -94,7 +249,7 @@ export default {
   /* width: 300px;
   height: 500px; */
 
-  background-image: url("../../assets/abstract_hand_painted_sunset_clouds_background_2606.jpg");
+  background-image: url("../../assets/clear.jpg");
   background-size: cover;
   transform: rotateY(0deg);
   transition: 2s;
@@ -177,6 +332,9 @@ export default {
   transform-origin: center bottom;
 }
 
+p {
+  padding-bottom: 20px;
+}
 /* .wrapCard:hover {
   transform: perspective(800px) rotateY(180deg);
 }
