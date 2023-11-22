@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-row">
-        <div class= "basis-1/8 p-2 border-2 border-indigo-400 rounded-lg" @click="showFollower">Follower : {{ followerList.length }}</div>
+        <div class= "basis-1/8 p-2 border-2 border-pink-400 rounded-lg" @click="showFollower">Follower : {{ followerList.length }}</div>
         <div class= "basis-1/8 p-2 mx-2.5 border-2 border-indigo-400 rounded-lg" @click="showFollowing">Following : {{ followingList.length }}</div>
     </div>
 </template>

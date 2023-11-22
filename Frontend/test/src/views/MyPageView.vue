@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-4xl" @click="showMyPage">My Page</p>
+    <p class="text-4xl font-bold" @click="showMyPage">My Page</p>
     <RouterView />
   </div>
 </template>

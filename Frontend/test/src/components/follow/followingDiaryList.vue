@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p>test</p>
     <div class="totalForm">
       <FollowingDiaryListItem
         v-for="diary in followingDiaryList"

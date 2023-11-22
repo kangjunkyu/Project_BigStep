@@ -1,6 +1,7 @@
 <template>
   <div>
-    <!-- <h3>DiaryView</h3> -->
+    <p class="text-4xl font-bold">Diary</p>
+    <br>
     <RouterView />
   </div>
 </template>

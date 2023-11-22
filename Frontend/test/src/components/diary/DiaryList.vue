@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h4>DiaryList</h4>
-    <button @click="showWrite">작성</button>
+    
     <VCalendar :is-dark="isDark" title-position="left" :attributes="attr"/>
+    <button @click="showWrite">작성</button>
     <ul>
       <DiaryListItem
         v-for="diary in diaryList"
