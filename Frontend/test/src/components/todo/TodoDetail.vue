@@ -3,6 +3,7 @@
         <h4>Todo Detail</h4>
         <p>{{ diaryStore.selectedTodo.workout }}</p>
     </div>
+    
 </template>
 
 <script setup>

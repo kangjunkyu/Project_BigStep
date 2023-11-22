@@ -1,14 +1,10 @@
 <template>
-    <div>
-        <h4>Todo</h4>
-        <RouterView/>
-    </div>
+  <div style="width: 45%">
+    <!-- <h4>Todo</h4> -->
+    <RouterView />
+  </div>
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

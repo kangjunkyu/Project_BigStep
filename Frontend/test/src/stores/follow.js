@@ -47,6 +47,18 @@ export const useFollowStore = defineStore("follow", () => {
       .catch(() => {});
   };
 
+  const FollowingDiaryList = ref([]);
+  const getFollowingDiaryList = function () {
+    axios
+      .get(
+        `http://localhost:7777/diary/diarys/following/${userStore.loginUser.id}`
+      )
+      .then((response) => {
+        FollowingDiaryList.value = response.data;
+        console.log(FollowingDiaryList.value);
+      })
+      .catch(() => {});
+  };
   return {
     getFollowerList,
     getFollowingList,
@@ -54,5 +66,7 @@ export const useFollowStore = defineStore("follow", () => {
     insertFollow,
     FollowerList,
     FollowingList,
+    FollowingDiaryList,
+    getFollowingDiaryList,
   };
 });

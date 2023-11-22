@@ -27,5 +27,8 @@ public interface DiaryDao {
 	
 	// decrease likeCnt
 	public int decreaseLikeCnt(int diaryId);
+	
+	public List<Diary> selectFollowingDiarys(String userId);
+
 
 }

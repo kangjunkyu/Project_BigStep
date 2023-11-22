@@ -79,8 +79,7 @@ public class DiaryController {
 	@ApiOperation(value="다이어리 등록", notes="JSON 형태로 입력받은 diary를 등록한다.")
 	public ResponseEntity<?> insertDiary(@ModelAttribute Diary diary, @RequestParam(required=false) MultipartFile file) 
 		throws IllegalStateException, IOException{
-		System.out.println(diary);
-		System.out.println(file.getOriginalFilename());
+
 		try {
 			if(file != null && file.getSize() > 0) {
 				Resource res = resLoader.getResource("classpath:/static/upload");
@@ -129,5 +128,21 @@ public class DiaryController {
 			return exceptionHandling(e);
 		}
 	}
+	@GetMapping("/diarys/following/{userId}")
+	@ApiOperation(value="팔로잉 다이어리 조회", notes="{userId}에 해당하는 유저가 팔로우하는 유저들의 다이어리 조회")
+	public ResponseEntity<?> selectFollowingDiarys(@PathVariable String userId){
+		try {
+			List<Diary> list = dService.selectFollowingDiarys(userId);
+			if(list == null) {
+				return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			}else {
+				return new ResponseEntity<List<Diary>>(list, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return exceptionHandling(e);
+		}
+	}
+	
+
 	
 }

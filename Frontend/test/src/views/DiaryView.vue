@@ -1,15 +1,10 @@
 <template>
-    <div>
-      <h3>DiaryView</h3>
-      <RouterView/>
-    </div>
-  </template>
-  
-  <script setup>
+  <div>
+    <!-- <h3>DiaryView</h3> -->
+    <RouterView />
+  </div>
+</template>
 
-  
-  </script>
-  
-  <style scoped>
-  
-  </style>
+<script setup></script>
+
+<style scoped></style>
