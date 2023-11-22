@@ -1,15 +1,19 @@
 <template>
-  <div>
+  <div class="flex flex-row gap-24">
     
+    <div class="flex flex-col">
     <VCalendar :is-dark="isDark" title-position="left" :attributes="attr"/>
     <button @click="showWrite">작성</button>
-    <ul>
+    </div>
+
+    <div class="flex flex-row flex-wrap gap-5">
+    
       <DiaryListItem
         v-for="diary in diaryList"
         :key="diary.diaryId"
         :diary="diary"
       />
-    </ul>
+    </div>
   </div>
 </template>
 
