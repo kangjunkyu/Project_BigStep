@@ -10,6 +10,7 @@ import Event from "../components/common/Event.vue";
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@300&display=swap");
 .eventview {
   display: flex;
   flex-direction: column;
