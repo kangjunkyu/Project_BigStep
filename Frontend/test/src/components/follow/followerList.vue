@@ -1,13 +1,13 @@
 <template>
   <div>
     <p class="text-xl font-bold">Follower List</p>
-    <ul>
+    <div class="flex justify-start flex-wrap gap-8">
       <followerListItem
         v-for="(follower, index) in followStore.FollowerList"
         :key="index"
         :follower="follower"
       />
-    </ul>
+    </div>
   </div>
 </template>
 

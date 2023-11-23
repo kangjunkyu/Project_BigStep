@@ -58,7 +58,6 @@ export const useFollowStore = defineStore("follow", () => {
       )
       .then((response) => {
         FollowingDiaryList.value = response.data;
-        console.log(FollowingDiaryList.value);
       })
       .catch(() => {});
   };

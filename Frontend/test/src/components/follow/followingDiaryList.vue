@@ -19,7 +19,6 @@ const followStore = useFollowStore();
 const followingDiaryList = computed(() => followStore.FollowingDiaryList);
 onMounted(() => {
   followStore.getFollowingDiaryList();
-  console.log(followStore.FollowingDiaryList);
 });
 </script>
 
@@ -28,6 +27,6 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 </style>

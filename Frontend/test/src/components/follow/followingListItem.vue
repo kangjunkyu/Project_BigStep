@@ -1,6 +1,6 @@
 <template>
   <div
-      class="border min-w-[400px] bg-card text-card-foreground rounded-lg overflow-hidden shadow-lg max-w-sm mx-auto hover:shadow-xl transition-all duration-200"
+      class="border min-w-[400px] bg-card text-card-foreground rounded-lg overflow-hidden shadow-lg max-w-sm  hover:shadow-xl transition-all duration-200"
       data-v0-t="card">
   
       <div class="p-4">
