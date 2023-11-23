@@ -1,7 +1,7 @@
 <template>
-  <div style="background-color: darkgray">
+  <div class="bg-gray-400 p-10 rounded-lg">
     <br />
-    <h4>Diary Update</h4>
+    <p class="text-2xl font-semibold">Diary Update</p>
     <label
       for="title"
       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -37,7 +37,12 @@
       v-model="diary.date"
       readonly
     /><br />
-    <button @click="updateDiary">수정완료</button>
+    <button
+      @click="updateDiary"
+      class="cursor-pointer hover:text-blue-700 hover:font-bold hover:text-lg pt-2"
+    >
+      Complete
+    </button>
   </div>
 </template>
 

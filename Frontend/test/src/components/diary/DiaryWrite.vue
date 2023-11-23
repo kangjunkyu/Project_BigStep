@@ -1,8 +1,5 @@
 <template>
-  <form
-    @submit.prevent="writeDiary"
-    style="background-color: darkgray; padding: 40px"
-  >
+  <form @submit.prevent="writeDiary" class="bg-gray-400 p-40 rounded-lg">
     <div class="mb-6">
       <label
         for="email"
