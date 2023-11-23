@@ -58,7 +58,7 @@
 		WHERE userid = #{userId}
 	</delete>
 	
-		<select id="selectFollowingDiarys" parameterType="String" resultType="Diary">
+	<select id="selectFollowingDiarys" parameterType="String" resultType="Diary">
 		SELECT * FROM diarys
 		WHERE userid IN (SELECT followingid FROM follows WHERE followerid = #{userId})
 	</select>

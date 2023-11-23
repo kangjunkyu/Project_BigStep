@@ -19,16 +19,16 @@
 	
 	
 	<!-- following 조회 -->
-	<select id="selectFollowings" parameterType="String" resultType="String">
-		SELECT followingid FROM follows
-		WHERE followerid = #{followerId}
+	<select id="selectFollowings" parameterType="String" resultType="User">
+		SELECT * FROM users WHERE id IN 
+		(SELECT followingid FROM follows WHERE followerid = #{followerId})
 	</select>
 	
 	
 	<!-- follower 조회 -->
-	<select id="selectFollowers" parameterType="String" resultType="String">
-		SELECT followerid FROM follows
-		WHERE followingid = #{followingId}
+	<select id="selectFollowers" parameterType="String" resultType="User">
+		SELECT * FROM users WHERE id IN 
+		(SELECT followerid FROM follows WHERE followingid = #{followingId})
 	</select>
 		
 </mapper>

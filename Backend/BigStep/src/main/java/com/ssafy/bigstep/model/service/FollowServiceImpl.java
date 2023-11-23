@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.bigstep.model.dao.FollowDao;
+import com.ssafy.bigstep.model.dto.User;
 
 @Service
 public class FollowServiceImpl implements FollowService{
@@ -31,12 +32,12 @@ public class FollowServiceImpl implements FollowService{
 	}
 
 	@Override
-	public List<String> selectFollowings(String followerId) {
+	public List<User> selectFollowings(String followerId) {
 		return fDao.selectFollowings(followerId);
 	}
 
 	@Override
-	public List<String> selectFollowers(String followingId) {
+	public List<User> selectFollowers(String followingId) {
 		return fDao.selectFollowers(followingId);
 	}
 

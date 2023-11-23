@@ -4,10 +4,10 @@
       data-v0-t="card">
   
       <div class="p-4">
-        <h2 class="text-2xl font-bold hover:text-gray-700 transition-all duration-200">{{user.name}}</h2>
-        <h3 class="text-gray-500 hover:text-gray-600 transition-all duration-200">{{user.nickname}}</h3>
+        <h2 class="text-2xl font-bold hover:text-gray-700 transition-all duration-200">{{following.name}}</h2>
+        <h3 class="text-gray-500 hover:text-gray-600 transition-all duration-200">{{following.nickname}}</h3>
         <p class="mt-2 text-gray-600 hover:text-gray-700 transition-all duration-200">
-          {{user.email}}
+          {{following.email}}
         </p>
         <div class="flex mt-4 space-x-2">
           <button @click="insertFollow"
@@ -28,17 +28,9 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const props = defineProps({
-  following: String,
+  following: Object,
 });
 
-const user = ref({})
-
-onMounted(() => {
-  axios.get('http://localhost:7777/user/'+props.following)
-  .then((response)=>{
-    user.value = response.data
-  })
-})
 
 
 
