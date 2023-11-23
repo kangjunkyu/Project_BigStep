@@ -142,7 +142,6 @@ const searchWeather = async () => {
     temp.value = Math.ceil(result.data.main.temp - 273.15);
     feels_like.value = Math.ceil(result.data.main.feels_like - 273.15);
     humidity.value = result.data.main.humidity;
-    console.log(result);
   } catch (error) {
     error.value =
       "날씨 정보를 가져오는 중 오류가 발생했습니다. 나중에 다시 시도해주세요.";
@@ -155,7 +154,6 @@ const searchWeather = async () => {
 const selectOutside = () => {
   const randomIndex = Math.floor(Math.random() * outsideWorkout.value.length);
   RandomOutside.value = outsideWorkout[randomIndex];
-  console
 };
 
 const selectInside = () => {
