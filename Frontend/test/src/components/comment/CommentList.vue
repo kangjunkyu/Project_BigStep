@@ -1,7 +1,5 @@
 <template>
   <div>
-    <p style="font-size: 20px">Comment List</p>
-    <br />
     <ul>
       <CommentListItem
         v-for="comment in commentList"

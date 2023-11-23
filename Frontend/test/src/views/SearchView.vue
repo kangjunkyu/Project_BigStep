@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h3>SearchView</h3>
+      <p class="text-4xl font-bold">Search</p>
       <RouterView/>
     </div>
   </template>

@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h3>MyPageView</h3>
-    <router-link to="/my-page/follower">follower</router-link> |
-    <router-link to="/my-page/following">following</router-link>
+    <p class="text-4xl font-bold" @click="showMyPage">My Page</p>
     <RouterView />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import router from '@/router'
+
+const showMyPage = function(){
+  router.push("/my-page")
+}
+</script>
 
 <style scoped></style>

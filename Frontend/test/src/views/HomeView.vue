@@ -11,7 +11,7 @@
   background-image: url("@/assets/러닝배경.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 92.7vh;
 }
 /* .text {
   text-align: right;

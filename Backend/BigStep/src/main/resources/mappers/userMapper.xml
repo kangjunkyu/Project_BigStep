@@ -10,17 +10,7 @@
 		VALUE (#{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, #{address}, #{height}, #{weight}, #{age}, #{gender}, #{isPublic})
 	</insert>
 
-	<delete id="deleteUser" parameterType="String">
-<!-- 		DELETE FROM todos WHERE diaryid IN (SELECT diaryid FROM diarys WHERE userid = #{userId});
-		DELETE FROM comments WHERE diaryid IN (SELECT diaryid FROM diarys WHERE userid = #{userId});		
-		DELETE FROM likes WHERE diaryid IN (SELECT diaryid FROM diarys WHERE userid = #{userId}); -->
-		
-		DELETE FROM todos WHERE userid = #{userId};
-		DELETE FROM comments WHERE userid = #{userId};
-		DELETE FROM likes WHERE userid = #{userId};
-		DELETE FROM follows WHERE followerid = #{userId} OR followingid = #{userId};
-		DELETE FROM diarys WHERE userid = #{userId};
-				
+	<delete id="deleteUser" parameterType="String">				
 		DELETE FROM users WHERE id = #{id};
 	</delete>
 

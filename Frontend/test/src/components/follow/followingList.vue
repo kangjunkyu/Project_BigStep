@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>followingList</h3>
+    <p class="text-xl font-bold">Follower List</p>
     <ul>
       <followingListItem
         v-for="(following, index) in followStore.FollowingList"

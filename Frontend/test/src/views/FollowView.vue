@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>FollowView</h3>
+    <p class="text-4xl font-bold">Follow</p>
 
     <FollowingDiaryList />
     <RouterView />

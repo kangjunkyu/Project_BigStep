@@ -11,6 +11,7 @@ import SearchView from "@/views/SearchView.vue";
 import DiaryList from "@/components/diary/DiaryList.vue";
 import DiaryDetail from "@/components/diary/DiaryDetail.vue";
 import DiaryWrite from "@/components/diary/DiaryWrite.vue";
+import DiaryWriteWithDate from '@/components/diary/DiaryWriteWithDate.vue'
 import DiaryUpdate from "@/components/diary/DiaryUpdate.vue";
 import SearchResult from "@/components/search/SearchResult.vue";
 import followerList from "@/components/follow/followerList.vue";
@@ -102,6 +103,11 @@ const router = createRouter({
               path: "write",
               name: "diaryWrite",
               component: DiaryWrite,
+            },
+            {
+              path:"write/:year/:month/:day",
+              name: "diaryWriteWithDate",
+              component: DiaryWriteWithDate,
             },
             {
               path: "update/:diaryId",

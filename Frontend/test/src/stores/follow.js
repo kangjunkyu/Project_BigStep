@@ -32,9 +32,11 @@ export const useFollowStore = defineStore("follow", () => {
     axios
       .post(REST_FOLLOW_URL + `${userStore.loginUser.id}/${id}`)
       .then((response) => {
-        router.push("/follow/follower");
+        alert("팔로우 완료")
       })
-      .catch(() => {});
+      .catch(() => {
+        alert("이미 팔로우한 유저입니다")
+      });
   };
 
   const deleteFollow = function (id) {
@@ -42,9 +44,10 @@ export const useFollowStore = defineStore("follow", () => {
       .delete(REST_FOLLOW_URL + `${userStore.loginUser.id}/${id}`)
       .then(() => {
         alert("삭제 완료");
-        router.push("/follow/follower");
       })
-      .catch(() => {});
+      .catch(() => {
+        alert("팔로우하지 않은 유저입니다")
+      });
   };
 
   const FollowingDiaryList = ref([]);
