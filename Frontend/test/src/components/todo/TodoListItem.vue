@@ -6,11 +6,12 @@
           ? 'w-full p-4 text-green-700 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:border-green-800 dark:text-green-400'
           : 'w-full p-4 text-blue-700 bg-blue-100 border border-blue-300 rounded-lg dark:bg-gray-800 dark:border-blue-800 dark:text-blue-400'
       "
-      
     >
-      <p @click="showDetail">{{ todo.workout }} / {{ todo.startHour }}:{{ todo.startMinute }} ~
-      {{ todo.endHour }}:{{ todo.endMinute }}</p>
-      
+      <p>
+        {{ todo.workout }} / {{ todo.startHour }}:{{ todo.startMinute }} ~
+        {{ todo.endHour }}:{{ todo.endMinute }}
+      </p>
+
       <div>
         <button
           @click="changeComplete"

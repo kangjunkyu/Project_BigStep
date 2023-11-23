@@ -1,5 +1,5 @@
 <template>
-  <p class="text-4xl font-bold">Event</p>
+  <p class="text-4xl font-bold">Weather</p>
   <div class="eventview">
     <Event />
   </div>

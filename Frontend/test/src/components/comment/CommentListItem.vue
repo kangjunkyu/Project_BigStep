@@ -1,39 +1,55 @@
 <template>
   <li>
     <div class="commentWrap">
-      <span>{{ props.comment.userId }} / {{ props.comment.content }}</span>
+      <span v-show="!isUpdate"
+        >{{ props.comment.userId }} / {{ props.comment.content }}</span
+      >
       <div>
         <span v-show="userStore.loginUser.id === comment.userId">
-          <button
+          <!-- <button
             @click="showUpdate"
             v-show="!isUpdate"
-            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
           >
             수정
-          </button>
-          <div v-show="isUpdate">
-            <textarea
-              v-model="comment.content"
-              @keyup.enter="updateComment"
-            ></textarea>
-            <button
-              @click="updateComment"
-              class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-            >
-              수정 완료
-            </button>
-          </div>
-          <button
+          </button> -->
+          <span
+            @click="showUpdate"
+            v-show="!isUpdate"
+            class="cursor-pointer hover:text-green-700 hover:font-bold hover:text-lg mx-4"
+            >수정</span
+          >
+
+          <!-- <button
             @click="deleteComment"
             v-show="!isUpdate"
-            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
+            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
           >
             삭제
-          </button>
+          </button> -->
+          <span
+            @click="deleteComment"
+            v-show="!isUpdate"
+            class="cursor-pointer hover:text-red-700 hover:font-bold hover:text-lg mx-2"
+            >삭제</span
+          >
         </span>
       </div>
     </div>
   </li>
+  <div v-show="isUpdate">
+    <textarea
+      id="message"
+      rows="4"
+      class="mb-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+      placeholder="Write your thoughts here..."
+      v-model="comment.content"
+      @keyup.enter="updateComment"
+    ></textarea>
+    <p class="ms-auto text-xs text-gray-500 dark:text-gray-400">
+      수정 혹은 이전으로 돌아가시려면 Enter Key를 눌러주세요.
+    </p>
+  </div>
 </template>
 
 <script setup>
@@ -77,5 +93,6 @@ const updateComment = function () {
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
+  padding-bottom: 6px;
 }
 </style>

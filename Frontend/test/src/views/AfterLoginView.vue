@@ -7,7 +7,7 @@
           style="height: 35px; padding-right: 10px"
         />BigStep
       </h1>
-      
+
       <nav>
         <RouterLink
           class="block py-4 px-4 rounded transition duration-200 hover:bg-gray-700"
@@ -38,11 +38,10 @@
           class="block py-4 px-4 rounded transition duration-200 hover:bg-gray-700"
           to="/Event"
         >
-          EVENT
+          Weather
         </RouterLink>
-        <Search/>
+        <Search />
       </nav>
-      
     </aside>
     <main class="flex-1 bg-gray-100 p-6" style="min-height: 100vh">
       <RouterView />
@@ -54,16 +53,12 @@
 import { useUserStore } from "@/stores/user";
 import { ref } from "vue";
 
-import Search from '@/components/common/Search.vue'
+import Search from "@/components/common/Search.vue";
 
 const logout = function () {
   userStore.logout();
 };
 const userStore = useUserStore();
-
-
-
-
 </script>
 
 <style scoped></style>

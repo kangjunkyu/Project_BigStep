@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 45%">
+  <div>
     <!-- <h4>Todo</h4> -->
     <RouterView />
   </div>
