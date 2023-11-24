@@ -30,9 +30,9 @@
             </div>
             <div>
               <br />
-              <p v-if="view1">마우스를 올려보세요</p>
-              <p v-if="view2">운동 추천과 동기부여</p>
-              <p v-if="view3">오늘도 힘내는 당신 화이팅</p>
+              <p v-if="view1" class="p1">마우스를 올려보세요</p>
+              <p v-if="view2" class="p1">운동 추천과 동기부여</p>
+              <p v-if="view3" class="p1">오늘도 힘내는 당신 화이팅</p>
             </div>
           </div>
 
@@ -40,8 +40,9 @@
           <div v-if="error">{{ error }}</div>
         </div>
         <div class="card_back" v-show="view">
-          <div v-if="temp > 25">
+          <div v-if="temp > 28">
             <p style="font-size: 30px">너무 더워요</p>
+            <p style="font-size: 30px">일사병 조심</p>
             <p style="font-size: 30px">실내운동</p>
             <br />
             <p style="font-size: 30px">{{ insideWorkout[RandomInside] }}</p>
@@ -49,8 +50,9 @@
             <p style="font-size: 20px">오늘의 동기부여 한마디</p>
             <p style="font-size: 15px">{{ motivation[RandomMotivation] }}</p>
           </div>
-          <div v-else-if="temp > 16 && temp <= 25">
+          <div v-else-if="temp > 16 && temp <= 28">
             <p style="font-size: 30px">나가기 좋은 날씨에요</p>
+            <p style="font-size: 30px">가벼운 발걸음으로</p>
             <p style="font-size: 30px">야외운동</p>
             <br />
             <p style="font-size: 30px">
@@ -89,7 +91,8 @@
             <p style="font-size: 15px">{{ motivation[RandomMotivation] }}</p>
           </div>
           <div v-else="temp <= 10">
-            <p style="font-size: 30px">밖은 추우니 실내운동 어때요?</p>
+            <p style="font-size: 30px">밖이 너무 추워요..</p>
+            <p style="font-size: 30px">실내운동 어때요?</p>
             <p style="font-size: 30px">실내운동</p>
             <br />
             <p style="font-size: 30px">{{ insideWorkout[RandomInside] }}</p>
@@ -119,7 +122,7 @@
       </div>
     </div>
     <div
-      v-else-if="weather === 'Cloud'"
+      v-else-if="weather === 'Clouds'"
       class="information"
       v-show="view"
       style="width: 300px; text-align: center; padding: 30px"
@@ -309,7 +312,7 @@ onMounted(() => {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@500&display=swap");
 
 .information {
   margin: 50px;
@@ -475,4 +478,17 @@ p {
   border-radius: 8px;
   backface-visibility: hidden;
 } */
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.p1 {
+  animation: fadein 0.5s ease;
+}
 </style>
