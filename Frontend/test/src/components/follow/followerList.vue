@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-xl font-bold">Follower List</p>
+    <p class="text-xl font-bold">Following List</p>
     <div class="flex justify-start flex-wrap gap-8">
       <followerListItem
         v-for="(follower, index) in followStore.FollowerList"

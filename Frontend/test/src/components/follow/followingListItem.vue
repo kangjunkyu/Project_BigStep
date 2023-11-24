@@ -15,7 +15,7 @@
       <p
         class="mt-2 text-gray-600 hover:text-gray-700 transition-all duration-200"
       >
-        {{ following.email }}
+        {{ following.id }}
       </p>
       <div class="flex mt-4 space-x-2">
         <button
