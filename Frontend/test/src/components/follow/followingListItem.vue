@@ -15,12 +15,12 @@
       <p
         class="mt-2 text-gray-600 hover:text-gray-700 transition-all duration-200"
       >
-        {{ following.email }}
+        {{ following.id }}
       </p>
       <div class="flex mt-4 space-x-2">
         <button
           @click="insertFollow"
-          class="inline-flex items-center justify-center text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground h-9 rounded-md px-3 w-full hover:bg-gray-700 hover:text-white transition-all duration-200"
+          class="inline-flex items-center justify-center text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent h-9 rounded-md px-3 w-full hover:border-gray-700 hover:text-gray-700 transition-all duration-200"
         >
           Follow
         </button>

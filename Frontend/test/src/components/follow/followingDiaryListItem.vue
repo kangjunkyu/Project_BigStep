@@ -1,6 +1,6 @@
 <template>
   <div class="shadow-lg ImgCard" @click="showDetail">
-    <img v-if="diary.img" :src="`http://localhost:7777/upload/${diary.img}`" />
+    <img v-if="diary.img" :src="`http://localhost:7777/upload/${diary.img}` " />
     <img v-else src="@/assets/곰발바닥.png" alt="" />
     <div class="ment">
       <!-- {{ diary.userId }}
