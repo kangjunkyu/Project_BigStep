@@ -86,17 +86,4 @@ CREATE TABLE `follows` (
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
 
-INSERT INTO users (id, pw, name, nickname, email, phone, address)
-VALUES ("ssafy", "1234", "강준규", "강준규", "ssafy@ssafy.com", "010-1111-1111", "123"),
-("ssafy2", "1234", "고은석", "고은석", "ssafy2@ssafy.com", "010-2222-2222", "456");
-
-INSERT INTO diarys (userid, title, content, date)
-VALUES ("ssafy", "테스트 제목", "테스트 content", "20231117");
-
-INSERT INTO todos (diaryid, userid, date, workout, start_hour, start_minute, end_hour, end_minute)
-VALUES (1, "ssafy", "20231117", "workout test", 9, 30, 10, 45);
-
-INSERT INTO comments (diaryid, userid, nickname, content)
-VALUES (1, "ssafy", "닉네임 test", "content test");
-
 
