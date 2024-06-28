@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=venom&color=timeAuto&height=200&section=header&text=💡%20Get%20iDEA&fontSize=70&animation=twinkling&fontAlign=50)
+![header](https://capsule-render.vercel.app/api?type=venom&color=timeAuto&height=200&section=header&text=💡%20Big%20Step&fontSize=70&animation=twinkling&fontAlign=50)
 
 ![header](https://capsule-render.vercel.app/api?type=rect&color=auto&height=100&section=header&text=바른%20생활의%20시작&fontSize=30&animation=fadeIn&fontAlign=70)
 
