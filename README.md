@@ -4,6 +4,27 @@
 
 # Big Step
 
+- 1학기 프로젝트
+
+## 작업일자
+
+2023.11.14 ~ 2023.11.24(2주)
+
+## Team
+
+- 개발자 : 강준규 / 고은석
+- 역할 : 풀스택
+
+### 사용기술
+
+#### 백엔드
+
+- Java, Spring, MyBatis, Maven
+
+#### 프론트엔드
+
+- Vue, JavaScript, Pinia, Vite, TailWind, BootStrap
+
 1. **오늘 운동한 기록을 남기자!**
 
 - 다이어리를 통한 운동 기록
@@ -74,16 +95,6 @@
 ### 팔로우
 
 ![](image/팔로우.png)
-
-### 사용기술
-
-#### 백엔드
-
-- Java, Spring, MyBatis, Maven
-
-#### 프론트엔드
-
-- Vue, JavaScript, Pinia, Vite, TailWind, BootStrap
 
 ## Notion Link
 
