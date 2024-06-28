@@ -25,6 +25,8 @@
 
 - Vue, JavaScript, Pinia, Vite, TailWind, BootStrap
 
+<br>
+
 1. **오늘 운동한 기록을 남기자!**
 
 - 다이어리를 통한 운동 기록
@@ -103,3 +105,11 @@ https://www.notion.so/final-project-idea-sketch-ba818f48f79f401289595b43af8df48a
 ## Swagger Link
 
 http://localhost:7777/swagger-ui/index.html
+
+<br>
+#### 후기
+- 첫 프로젝트였지만 많은 도움이 되었다.
+- CRUD에 대한 공부와 MVC 모델에 대한 학습이 되었다.
+- 파일 업로드 기능을 구현할 땐 꼭. DB를 Content로 하자.
+- S3를 쓰면 더 쉽게 할 수 있다고는 하나, 아직 AWS를 못받았으니 추후 학습하자
+- SPA가 확실히 편하긴 한 거 같다. 그러나 사이트가 무거워지면 해결 방안을 생각해야 할 듯
